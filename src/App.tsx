@@ -1,21 +1,19 @@
 import React from 'react';
+import { ChakraProvider, Box } from '@chakra-ui/react';
+import { theme } from './theme/theme';
+import { AppLogo } from './components/AppLogo';
+import { AppRoutes } from './AppRoutes';
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'>
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider theme={theme}>
+      <Box className='App' bg='background.app' minHeight={'100vh'} p={'8px'}>
+        <header className='App-header'>
+          <AppLogo />
+        </header>
+        <AppRoutes />
+      </Box>
+    </ChakraProvider>
   );
 }
 
