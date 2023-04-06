@@ -28,14 +28,26 @@ export const CharacterSheetHeader = (props: Props) => {
       borderRadius={10}
       p='8px'
       width={'100%'}
-      justifyContent={'space-between'}>
+      justifyContent={'space-evenly'}>
       <CharacterSheetName
-        pr={'16px'}
         characterName={props.characterName}
         setCharacterName={props.setCharacterName}
+        pr={'16px'}
       />
-      <CharacterHeaderInfo pr={'16px'} />
-      <CharacterHeaderPhoto />
+      <CharacterHeaderInfo
+        classAndLevel={props.classAndLevel}
+        setClassAndLevel={props.setClassAndLevel}
+        race={props.race}
+        setRace={props.setRace}
+        background={props.background}
+        setBackground={props.setBackground}
+        alignment={props.alignment}
+        setAlignment={props.setAlignment}
+        experiencePoints={props.experiencePoints}
+        setExperiencePoints={props.setExperiencePoints}
+        playerName={props.playerName}
+        setPlayerName={props.setPlayerName}
+      />
     </Flex>
   );
 };

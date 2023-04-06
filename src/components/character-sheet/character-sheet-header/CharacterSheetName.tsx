@@ -1,24 +1,23 @@
 import { Flex, Text, Input } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { LabelledInput } from '../../custom-components/LabelledInput';
 
-type Props = { [propName: string]: any };
+type Props = {
+  characterName: string;
+  setCharacterName: (value: string) => void;
+} & { [stylingProp: string]: any };
 
-export const CharacterSheetName = (stylingProps: Props) => {
+export const CharacterSheetName = ({
+  characterName,
+  setCharacterName,
+  ...stylingProps
+}: Props) => {
   return (
-    <Flex flexDirection={'column'} {...stylingProps}>
-      <Text
-        color={'text.secondary'}
-        fontFamily={'Tahoma'}
-        fontSize={'2xl'}
-        textAlign={'center'}>
-        Character Name
-      </Text>
-      <Input
-        width={'200px'}
-        color={'text.primary'}
-        focusBorderColor='text.secondary'
-        variant={'flushed'}
-      />
-    </Flex>
+    <LabelledInput
+      label={'Character Name'}
+      stateValue={characterName}
+      setStateValue={setCharacterName}
+      {...stylingProps}
+    />
   );
 };
