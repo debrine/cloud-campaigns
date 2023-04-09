@@ -1,0 +1,13 @@
+/* TODO remove and convert this to chakra */
+
+.hidden {
+  visibility: hidden;
+}
+
+.hiddenContainer:hover > * > * {
+  visibility: visible;
+}
+
+.hiddenContainer:hover .blur {
+  filter: blur(2px);
+}
