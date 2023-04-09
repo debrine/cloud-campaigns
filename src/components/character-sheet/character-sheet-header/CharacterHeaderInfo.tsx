@@ -1,10 +1,11 @@
 import { Flex, Input, Text } from '@chakra-ui/react';
 import React from 'react';
 import { LabelledInput } from '../../custom-components/LabelledInput';
+import { LabelledNumberInput } from '../../custom-components/LabelledNumberInput';
 
 type Props = {
-  classAndLevel: string;
-  setClassAndLevel: (classAndLevel: string) => void;
+  characterClass: string;
+  setCharacterClass: (classAndLevel: string) => void;
   race: string;
   setRace: (race: string) => void;
   background: string;
@@ -13,14 +14,12 @@ type Props = {
   setAlignment: (alignment: string) => void;
   experiencePoints: number;
   setExperiencePoints: (experiencePoints: number) => void;
-  playerName: string;
-  setPlayerName: (playerName: string) => void;
 } & { [stylingProp: string]: any };
 
 // TODO change these stylings to be variants
 export const CharacterHeaderInfo = ({
-  classAndLevel,
-  setClassAndLevel,
+  characterClass,
+  setCharacterClass,
   race,
   setRace,
   background,
@@ -29,17 +28,15 @@ export const CharacterHeaderInfo = ({
   setAlignment,
   experiencePoints,
   setExperiencePoints,
-  playerName,
-  setPlayerName,
   ...stylingProps
 }: Props) => {
   return (
     <Flex {...stylingProps}>
       <Flex flexDirection={'column'}>
         <LabelledInput
-          stateValue={classAndLevel}
-          setStateValue={setClassAndLevel}
-          label='Class & Level'
+          stateValue={characterClass}
+          setStateValue={setCharacterClass}
+          label='Class'
           mb={'16px'}
         />
         <LabelledInput stateValue={race} setStateValue={setRace} label='Race' />
@@ -56,21 +53,6 @@ export const CharacterHeaderInfo = ({
           stateValue={alignment}
           setStateValue={setAlignment}
           label='Alignment'
-        />
-      </Flex>
-
-      <Flex flexDirection={'column'} mx={'16px'}>
-        <LabelledInput
-          stateValue={playerName}
-          setStateValue={setPlayerName}
-          label='Player Name'
-          mb={'16px'}
-        />
-
-        <LabelledInput
-          stateValue={experiencePoints}
-          setStateValue={setExperiencePoints}
-          label='Experience Points'
         />
       </Flex>
     </Flex>
