@@ -1,8 +1,11 @@
 import React from 'react';
 import { StyledFlexPanel } from '../../custom-components/StyledFlexPanel';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import { CharacterSheetBodySkillDetails } from './CharacterSheetBodySkillDetails';
 
-type Props = {};
+type Props = {
+  proficiencyBonus: number;
+};
 
 export const CharacterSheetBodyTabSelector = (props: Props) => {
   return (
@@ -18,7 +21,9 @@ export const CharacterSheetBodyTabSelector = (props: Props) => {
 
         <TabPanels>
           <TabPanel>
-            <p>Skills</p>
+            <CharacterSheetBodySkillDetails
+              proficiencyBonus={props.proficiencyBonus}
+            />
           </TabPanel>
           <TabPanel>
             <p>Combat</p>

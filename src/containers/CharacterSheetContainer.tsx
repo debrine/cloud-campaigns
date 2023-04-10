@@ -25,6 +25,8 @@ export const CharacterSheetContainer = (props: Props) => {
   const [wisdom, setWisdom] = useState(1);
   const [charisma, setCharisma] = useState(1);
 
+  const [proficiencyBonus, setProficiencyBonus] = useState(0);
+
   // update this to be a backend function call
   const levelUp = (): void => {
     const newLevel = level + 1 <= MAX_LEVEL ? level + 1 : MAX_LEVEL;
@@ -67,7 +69,7 @@ export const CharacterSheetContainer = (props: Props) => {
           charisma={charisma}
           setCharisma={setCharisma}
         />
-        <CharacterSheetBodyTabSelector />
+        <CharacterSheetBodyTabSelector proficiencyBonus={proficiencyBonus} />
       </Flex>
     </>
   );
