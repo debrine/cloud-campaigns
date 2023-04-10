@@ -5,6 +5,7 @@ import { CharacterSheetHeader } from '../components/character-sheet/character-sh
 import { ExperienceBar } from '../components/custom-components/level-components/ExperienceBar';
 import { MAX_LEVEL } from '../constants/experience-points';
 import { CharacterSheetAbilityScores } from '../components/character-sheet/CharacterSheetAbilityScores';
+import { CharacterSheetBodyTabSelector } from '../components/character-sheet/character-sheet-body/CharacterSheetBodyTabSelector';
 
 type Props = {};
 
@@ -51,20 +52,23 @@ export const CharacterSheetContainer = (props: Props) => {
           levelUp={levelUp}
         />
       </Flex>
-      <CharacterSheetAbilityScores
-        strength={strength}
-        setStrength={setStrength}
-        dexterity={dexterity}
-        setDexterity={setDexterity}
-        constitution={constitution}
-        setConstitution={setConstitution}
-        intelligence={intelligence}
-        setIntelligence={setIntelligence}
-        wisdom={wisdom}
-        setWisdom={setWisdom}
-        charisma={charisma}
-        setCharisma={setCharisma}
-      />
+      <Flex>
+        <CharacterSheetAbilityScores
+          strength={strength}
+          setStrength={setStrength}
+          dexterity={dexterity}
+          setDexterity={setDexterity}
+          constitution={constitution}
+          setConstitution={setConstitution}
+          intelligence={intelligence}
+          setIntelligence={setIntelligence}
+          wisdom={wisdom}
+          setWisdom={setWisdom}
+          charisma={charisma}
+          setCharisma={setCharisma}
+        />
+        <CharacterSheetBodyTabSelector />
+      </Flex>
     </>
   );
 };
