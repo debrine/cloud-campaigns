@@ -26,6 +26,7 @@ export const CharacterSheetContainer = (props: Props) => {
   const [charisma, setCharisma] = useState(1);
 
   const [proficiencyBonus, setProficiencyBonus] = useState(0);
+  const [inspiration, setInspiration] = useState(0);
 
   // update this to be a backend function call
   const levelUp = (): void => {
@@ -52,6 +53,9 @@ export const CharacterSheetContainer = (props: Props) => {
           level={level}
           setLevel={setLevel}
           levelUp={levelUp}
+          proficiencyBonus={proficiencyBonus}
+          inspiration={inspiration}
+          setInspiration={setInspiration}
         />
       </Flex>
       <Flex>

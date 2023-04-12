@@ -11,7 +11,6 @@ export const StyledFlexPanel = (props: Props) => {
       borderRadius={10}
       p='8px'
       width={'100%'}
-      justifyContent={'space-evenly'}
       {...props}>
       {props.children}
     </Flex>

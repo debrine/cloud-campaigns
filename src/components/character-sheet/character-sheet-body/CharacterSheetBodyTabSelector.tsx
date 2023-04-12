@@ -9,7 +9,7 @@ type Props = {
 
 export const CharacterSheetBodyTabSelector = (props: Props) => {
   return (
-    <StyledFlexPanel mx={'16px'}>
+    <StyledFlexPanel ml={'16px'}>
       <Tabs width={'100%'} align='center'>
         <TabList width={'fit-content'} color={'text.primary'}>
           <Tab>Skills</Tab>
@@ -17,6 +17,7 @@ export const CharacterSheetBodyTabSelector = (props: Props) => {
           <Tab>Inventory</Tab>
           <Tab>Notes</Tab>
           <Tab>Character</Tab>
+          <Tab>Party</Tab>
         </TabList>
 
         <TabPanels>
@@ -36,6 +37,9 @@ export const CharacterSheetBodyTabSelector = (props: Props) => {
           </TabPanel>
           <TabPanel>
             <p>Character</p>
+          </TabPanel>
+          <TabPanel>
+            <p>Party</p>
           </TabPanel>
         </TabPanels>
       </Tabs>
