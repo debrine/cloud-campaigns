@@ -6,7 +6,9 @@ export const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<CharacterSheetContainer />}></Route>
+        <Route
+          path='/cloud-campaigns/'
+          element={<CharacterSheetContainer />}></Route>
       </Routes>
     </Router>
   );
