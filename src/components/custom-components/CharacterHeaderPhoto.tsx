@@ -1,4 +1,4 @@
-import { Flex, Text, Image, Box } from '@chakra-ui/react';
+import { Flex, Image, Box } from '@chakra-ui/react';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';

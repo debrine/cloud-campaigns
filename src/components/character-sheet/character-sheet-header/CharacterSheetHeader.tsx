@@ -3,7 +3,6 @@ import React from 'react';
 import { CharacterSheetName } from './CharacterSheetName';
 import { CharacterHeaderInfo } from './CharacterHeaderInfo';
 import { EditableImage } from '../../custom-components/CharacterHeaderPhoto';
-import { ExperienceBar } from '../../custom-components/level-components/ExperienceBar';
 import { StyledFlexPanel } from '../../custom-components/StyledFlexPanel';
 import { CharacterHeaderLevel } from './CharacterHeaderLevel';
 import { LevellingType } from '../../../enums/character-sheet-enums';

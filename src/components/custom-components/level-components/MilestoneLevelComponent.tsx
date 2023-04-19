@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Stat,
-  StatLabel,
-  StatNumber,
-} from '@chakra-ui/react';
+import { Box, Flex, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import React from 'react';
 import { ActiveButton } from '../buttons/ActiveButton';
 

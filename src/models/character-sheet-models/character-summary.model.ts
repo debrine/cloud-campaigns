@@ -8,3 +8,5 @@ export const CharacterSummaryModel = z.object({
   characterLevel: z.number().optional(),
   characterRace: z.string(), // Enum?
 });
+
+export type CharacterSummaryModel = z.infer<typeof CharacterSummaryModel>;

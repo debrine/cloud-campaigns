@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { Flex } from '@chakra-ui/react';
 import { CharacterSheetHeader } from '../components/character-sheet/character-sheet-header/CharacterSheetHeader';
-import { ExperienceBar } from '../components/custom-components/level-components/ExperienceBar';
 import { MAX_LEVEL } from '../constants/experience-points';
 import { CharacterSheetAbilityScores } from '../components/character-sheet/CharacterSheetAbilityScores';
 import { CharacterSheetBodyTabSelector } from '../components/character-sheet/character-sheet-body/CharacterSheetBodyTabSelector';
@@ -27,6 +26,8 @@ export const CharacterSheetContainer = (props: Props) => {
 
   const [proficiencyBonus, setProficiencyBonus] = useState(0);
   const [inspiration, setInspiration] = useState(0);
+
+  console.log(setProficiencyBonus);
 
   // update this to be a backend function call
   const levelUp = (): void => {

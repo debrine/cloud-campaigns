@@ -1,7 +1,6 @@
-import { Flex, Input, Text } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import React from 'react';
 import { LabelledInput } from '../../custom-components/LabelledInput';
-import { LabelledNumberInput } from '../../custom-components/LabelledNumberInput';
 
 type Props = {
   characterClass: string;
