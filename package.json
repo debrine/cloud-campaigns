@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "homepage": "https://debrine.github.io/cloud-campaigns/",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.5.5",
