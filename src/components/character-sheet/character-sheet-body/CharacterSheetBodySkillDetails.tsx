@@ -8,7 +8,7 @@ type Props = {
 export const CharacterSheetBodySkillDetails = (props: Props) => {
   return (
     <Flex>
-      <Flex></Flex>
+      <Flex>hi</Flex>
     </Flex>
   );
 };
