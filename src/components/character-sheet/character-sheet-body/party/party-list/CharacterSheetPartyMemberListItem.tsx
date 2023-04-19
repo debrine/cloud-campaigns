@@ -4,7 +4,6 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  Box,
   Flex,
   Text,
   Textarea,

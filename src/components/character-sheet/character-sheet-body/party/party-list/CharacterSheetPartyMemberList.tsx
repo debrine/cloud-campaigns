@@ -1,9 +1,5 @@
 import React from 'react';
 import { CharacterSheetPartyMemberListItem } from './CharacterSheetPartyMemberListItem';
-import {
-  CharacterClass,
-  CharacterRace,
-} from '../../../../../enums/character-sheet-enums';
 import { Accordion } from '@chakra-ui/react';
 import { CharacterSummaryModel } from '../../../../../models/character-sheet-models/character-summary.model';
 
