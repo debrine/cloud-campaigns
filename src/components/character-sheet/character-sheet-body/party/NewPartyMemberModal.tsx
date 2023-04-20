@@ -12,9 +12,14 @@ import { NewPartyMemberForm } from './NewPartyMemberForm';
 type Props = {
   isOpen: boolean;
   onClose: () => void;
+  addNewPartyMember: (newPartyMember: any) => void;
 };
 
-export const NewPartyMemberModal = ({ isOpen, onClose }: Props) => {
+export const NewPartyMemberModal = ({
+  isOpen,
+  onClose,
+  addNewPartyMember,
+}: Props) => {
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} size={'xl'}>
@@ -23,7 +28,10 @@ export const NewPartyMemberModal = ({ isOpen, onClose }: Props) => {
           <ModalHeader>Add New Party Member</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <NewPartyMemberForm />
+            <NewPartyMemberForm
+              addNewPartyMember={addNewPartyMember}
+              onClose={onClose}
+            />
           </ModalBody>
         </ModalContent>
       </Modal>

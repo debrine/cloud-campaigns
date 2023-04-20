@@ -5,7 +5,11 @@ import { ActiveButton } from '../buttons/ActiveButton';
 // TODO type levelUp function
 type Props = { level: number; levelUp: any } & { [stylingProp: string]: any };
 
-export const MilestoneLevelComponent = ({ level, ...stylingProps }: Props) => {
+export const MilestoneLevelComponent = ({
+  level,
+  levelUp,
+  ...stylingProps
+}: Props) => {
   return (
     <Flex mt={'16px'} alignItems={'center'} {...stylingProps}>
       {/* <Heading my={'16px'} color={'experienceBar'}>
@@ -17,7 +21,7 @@ export const MilestoneLevelComponent = ({ level, ...stylingProps }: Props) => {
           <StatNumber>{level}</StatNumber>
         </Stat>
       </Box>
-      <ActiveButton>Level Up</ActiveButton>
+      <ActiveButton onClick={() => levelUp()}>Level Up</ActiveButton>
     </Flex>
   );
 };

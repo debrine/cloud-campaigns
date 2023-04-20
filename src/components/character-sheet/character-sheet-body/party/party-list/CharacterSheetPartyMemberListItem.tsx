@@ -38,7 +38,7 @@ export const CharacterSheetPartyMemberListItem = ({
             <Flex flexDirection={'column'} mr={'32px'}>
               <Text color={'text.primary'}>
                 {characterClass}
-                {characterLevel && `- Level ${characterLevel}`}
+                {characterLevel && ` - Level ${characterLevel}`}
               </Text>
               <Text color={'text.primary'}>{characterRace}</Text>
             </Flex>

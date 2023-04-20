@@ -13,7 +13,10 @@ import {
   CharacterRace,
 } from '../../../../enums/character-sheet-enums';
 import { Formik, Form, Field, FieldProps } from 'formik';
-type Props = {};
+type Props = {
+  addNewPartyMember: (newPartyMember: any) => void;
+  onClose: () => void;
+};
 
 interface NewPartyMemberFormValues {
   characterName: string;
@@ -24,7 +27,7 @@ interface NewPartyMemberFormValues {
 }
 
 // TODO - Add validation, clean this up. Can I make this more generic?
-export const NewPartyMemberForm = (props: Props) => {
+export const NewPartyMemberForm = ({ addNewPartyMember, onClose }: Props) => {
   const initialValues: NewPartyMemberFormValues = {
     characterName: '',
     playerName: '',
@@ -37,7 +40,8 @@ export const NewPartyMemberForm = (props: Props) => {
     <Formik
       initialValues={initialValues}
       onSubmit={(values, actions) => {
-        console.log(values);
+        addNewPartyMember(values);
+        onClose();
       }}>
       <Form>
         <Flex m={'16px'} flexDirection={'column'}>

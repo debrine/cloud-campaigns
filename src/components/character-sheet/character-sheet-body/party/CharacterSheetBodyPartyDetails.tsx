@@ -1,5 +1,5 @@
 import { Flex, useDisclosure } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { ActiveButton } from '../../../custom-components/buttons/ActiveButton';
 import { NewPartyMemberModal } from './NewPartyMemberModal';
 import { CharacterSheetPartyMemberList } from './party-list/CharacterSheetPartyMemberList';
@@ -7,10 +7,11 @@ import {
   CharacterRace,
   CharacterClass,
 } from '../../../../enums/character-sheet-enums';
+import { CharacterSummaryModel } from '../../../../models/character-sheet-models/character-summary.model';
 
 type Props = {};
 
-const mockPartyMembers = [
+const mockPartyMembers: CharacterSummaryModel[] = [
   {
     characterName: 'WAAP',
     playerName: 'Dylan Brine',
@@ -46,15 +47,24 @@ const mockPartyMembers = [
 ];
 
 export const CharacterSheetBodyPartyDetails = (props: Props) => {
+  const [partyMembers, setPartyMembers] = useState(mockPartyMembers);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const addNewPartyMember = (newPartyMember: CharacterSummaryModel) => {
+    setPartyMembers([...partyMembers, newPartyMember]);
+  };
   return (
     <>
-      <NewPartyMemberModal isOpen={isOpen} onClose={onClose} />
+      <NewPartyMemberModal
+        isOpen={isOpen}
+        onClose={onClose}
+        addNewPartyMember={addNewPartyMember}
+      />
       <Flex width='100%' flexDirection={'column'}>
         <Flex justifyContent='flex-end' width='100%' mb={'16px'}>
           <ActiveButton onClick={onOpen}>Add Member</ActiveButton>
         </Flex>
-        <CharacterSheetPartyMemberList partyMembers={mockPartyMembers} />
+        <CharacterSheetPartyMemberList partyMembers={partyMembers} />
       </Flex>
     </>
   );

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Flex, Input, Select, Text } from '@chakra-ui/react';
+import { theme } from '../../theme/theme';
 
 type Props = {
   label: string;
@@ -15,6 +16,10 @@ export const LabelledSelect = ({
   options,
   ...stylingProps
 }: Props) => {
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setStateValue(event.target.value);
+  };
+
   return (
     <Flex {...stylingProps}>
       <Flex flexDirection={'column'}>
@@ -29,10 +34,21 @@ export const LabelledSelect = ({
         <Select
           width={'200px'}
           color={'text.primary'}
+          colorScheme={'gray'}
           focusBorderColor='text.secondary'
-          variant={'flushed'}>
+          variant={'flushed'}
+          value={stateValue}
+          onChange={handleChange}>
           {options.map((option) => (
-            <option key={option} value={option}>
+            <option
+              key={option}
+              value={option}
+              style={
+                {
+                  background: theme.colors.background.app,
+                  color: theme.colors.text.primary,
+                } as React.CSSProperties
+              }>
               {option}
             </option>
           ))}

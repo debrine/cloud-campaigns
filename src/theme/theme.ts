@@ -1,5 +1,6 @@
 import { RAW_COLOURS } from './RAW_COLOURS';
 import { extendTheme } from '@chakra-ui/react';
+import { selectTheme } from './variants/select-theme';
 
 export const theme = extendTheme({
   colors: {
@@ -28,4 +29,8 @@ export const theme = extendTheme({
       },
     },
   },
+});
+
+const customTheme = extendTheme({
+  components: {},
 });

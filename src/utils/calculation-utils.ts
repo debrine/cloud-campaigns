@@ -11,6 +11,17 @@ export const calculateModifierFromAbilityScore = (
   return Math.floor((abilityScore - 10) / 2);
 };
 
+export const calculateProficiencyBonus = (level: number): number => {
+  if (level < 0) {
+    throw new Error('Level must be at least 0.');
+  }
+
+  // Proficiency bonus increases every 4 levels: levels 1-4, 5-8, 9-12, etc.
+  const proficiencyBonus = 2 + Math.floor((level - 1) / 4);
+
+  return proficiencyBonus >= 2 ? proficiencyBonus : 2;
+};
+
 export const getExperienceNeededForLevelUp = (currentLevel: number): number => {
   const experiencePointsCurrentLevel = EXPERIENCE_POINTS_PER_LEVEL.find(
     (levelData) => levelData.level === currentLevel

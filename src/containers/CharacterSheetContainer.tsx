@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Flex } from '@chakra-ui/react';
 import { CharacterSheetHeader } from '../components/character-sheet/character-sheet-header/CharacterSheetHeader';
 import { MAX_LEVEL } from '../constants/experience-points';
 import { CharacterSheetAbilityScores } from '../components/character-sheet/CharacterSheetAbilityScores';
 import { CharacterSheetBodyTabSelector } from '../components/character-sheet/character-sheet-body/CharacterSheetBodyTabSelector';
+import { calculateProficiencyBonus } from '../utils/calculation-utils';
 
 type Props = {};
 
@@ -14,7 +15,7 @@ export const CharacterSheetContainer = (props: Props) => {
   const [race, setRace] = useState('');
   const [background, setBackground] = useState('');
   const [alignment, setAlignment] = useState('');
-  const [level, setLevel] = useState(0); // TODO: [level, setLevel
+  const [level, setLevel] = useState(0);
   const [experiencePoints, setExperiencePoints] = useState(0);
 
   const [strength, setStrength] = useState(1);
@@ -24,10 +25,15 @@ export const CharacterSheetContainer = (props: Props) => {
   const [wisdom, setWisdom] = useState(1);
   const [charisma, setCharisma] = useState(1);
 
-  const [proficiencyBonus, setProficiencyBonus] = useState(0);
+  // should this be state?
+  const [proficiencyBonus, setProficiencyBonus] = useState(
+    calculateProficiencyBonus(level)
+  );
   const [inspiration, setInspiration] = useState(0);
 
-  console.log(setProficiencyBonus);
+  useEffect(() => {
+    setProficiencyBonus(calculateProficiencyBonus(level));
+  }, [level]);
 
   // update this to be a backend function call
   const levelUp = (): void => {

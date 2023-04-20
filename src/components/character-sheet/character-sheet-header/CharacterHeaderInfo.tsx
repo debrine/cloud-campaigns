@@ -1,6 +1,11 @@
 import { Flex } from '@chakra-ui/react';
 import React from 'react';
 import { LabelledInput } from '../../custom-components/LabelledInput';
+import { LabelledSelect } from '../../custom-components/LabelledSelect';
+import {
+  CharacterClass,
+  CharacterRace,
+} from '../../../enums/character-sheet-enums';
 
 type Props = {
   characterClass: string;
@@ -32,22 +37,30 @@ export const CharacterHeaderInfo = ({
   return (
     <Flex {...stylingProps}>
       <Flex flexDirection={'column'}>
-        <LabelledInput
+        <LabelledSelect
           stateValue={characterClass}
           setStateValue={setCharacterClass}
           label='Class'
+          options={Object.values(CharacterClass)}
           mb={'16px'}
         />
-        <LabelledInput stateValue={race} setStateValue={setRace} label='Race' />
-      </Flex>
-
-      <Flex flexDirection={'column'} mx={'16px'}>
         <LabelledInput
           stateValue={background}
           setStateValue={setBackground}
           label='Background'
           mb={'16px'}
         />
+      </Flex>
+
+      <Flex flexDirection={'column'} mx={'16px'}>
+        <LabelledSelect
+          stateValue={race}
+          setStateValue={setRace}
+          label='Race'
+          options={Object.values(CharacterRace)}
+          mb={'16px'}
+        />
+
         <LabelledInput
           stateValue={alignment}
           setStateValue={setAlignment}
