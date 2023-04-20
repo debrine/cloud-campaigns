@@ -5,13 +5,23 @@ import { CharacterSummaryModel } from '../../../../../models/character-sheet-mod
 
 type Props = {
   partyMembers: CharacterSummaryModel[];
+  removePartyMember: (
+    partyMemberIdToRemove: CharacterSummaryModel['id']
+  ) => void;
+  openEditPartyMemberModal: (partyMemberToEdit: CharacterSummaryModel) => void;
 };
 
 export const CharacterSheetPartyMemberList = (props: Props) => {
   return (
     <Accordion allowMultiple>
       {props.partyMembers.map((partyMember) => {
-        return <CharacterSheetPartyMemberListItem {...partyMember} />;
+        return (
+          <CharacterSheetPartyMemberListItem
+            {...partyMember}
+            removePartyMember={props.removePartyMember}
+            openEditPartyMemberModal={props.openEditPartyMemberModal}
+          />
+        );
       })}
     </Accordion>
   );

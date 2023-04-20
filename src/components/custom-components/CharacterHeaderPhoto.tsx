@@ -21,7 +21,6 @@ export const EditableImage = ({ src, ...stylingProps }: Props) => {
         <FontAwesomeIcon
           className='hidden'
           icon={icon({ name: 'pen-to-square', style: 'solid' })}
-          size={'2x'}
         />
       </Box>
       <Image height={'100%'} src={src} className='blur' />

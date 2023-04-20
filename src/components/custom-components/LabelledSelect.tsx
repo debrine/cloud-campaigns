@@ -33,7 +33,6 @@ export const LabelledSelect = ({
         </Text>
         <Select
           width={'200px'}
-          color={'text.primary'}
           colorScheme={'gray'}
           focusBorderColor='text.secondary'
           variant={'flushed'}

@@ -8,6 +8,7 @@ import {
   CharacterClass,
 } from '../../../../enums/character-sheet-enums';
 import { CharacterSummaryModel } from '../../../../models/character-sheet-models/character-summary.model';
+import { FormState } from '../../../../enums/form-enums';
 
 type Props = {};
 
@@ -49,22 +50,75 @@ const mockPartyMembers: CharacterSummaryModel[] = [
 export const CharacterSheetBodyPartyDetails = (props: Props) => {
   const [partyMembers, setPartyMembers] = useState(mockPartyMembers);
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const [formState, setFormState] = useState<FormState>(FormState.New);
+  const [currentPartyMemberDetailsToEdit, setCurrentPartyMemberDetailsToEdit] =
+    useState<CharacterSummaryModel | undefined>(undefined);
   const addNewPartyMember = (newPartyMember: CharacterSummaryModel) => {
     setPartyMembers([...partyMembers, newPartyMember]);
   };
+
+  const removePartyMember = (
+    partyMemberIdToRemove: CharacterSummaryModel['id']
+  ) => {
+    setPartyMembers(
+      partyMembers.filter(
+        (partyMember) => partyMember.id !== partyMemberIdToRemove
+      )
+    );
+  };
+
+  const editPartyMemberById = (
+    partyMemberIdToEdit: CharacterSummaryModel['id'],
+    updatedPartyMember: Partial<CharacterSummaryModel>
+  ) => {
+    setPartyMembers(
+      partyMembers.map((partyMember) => {
+        if (partyMember.id === partyMemberIdToEdit) {
+          return {
+            ...partyMember,
+            ...updatedPartyMember,
+          };
+        }
+        return partyMember;
+      })
+    );
+  };
+
+  const openNewPartyMemberModal = () => {
+    setFormState(FormState.New);
+    setCurrentPartyMemberDetailsToEdit(undefined);
+    onOpen();
+  };
+
+  const openEditPartyMemberModal = (
+    partyMemberToEdit: CharacterSummaryModel
+  ) => {
+    setFormState(FormState.Edit);
+    setCurrentPartyMemberDetailsToEdit(partyMemberToEdit);
+    onOpen();
+  };
+
   return (
     <>
       <NewPartyMemberModal
         isOpen={isOpen}
         onClose={onClose}
         addNewPartyMember={addNewPartyMember}
+        formState={formState}
+        currentPartyMemberDetails={currentPartyMemberDetailsToEdit}
+        editPartyMemberById={editPartyMemberById}
       />
       <Flex width='100%' flexDirection={'column'}>
         <Flex justifyContent='flex-end' width='100%' mb={'16px'}>
-          <ActiveButton onClick={onOpen}>Add Member</ActiveButton>
+          <ActiveButton onClick={openNewPartyMemberModal}>
+            Add Member
+          </ActiveButton>
         </Flex>
-        <CharacterSheetPartyMemberList partyMembers={partyMembers} />
+        <CharacterSheetPartyMemberList
+          partyMembers={partyMembers}
+          removePartyMember={removePartyMember}
+          openEditPartyMemberModal={openEditPartyMemberModal}
+        />
       </Flex>
     </>
   );

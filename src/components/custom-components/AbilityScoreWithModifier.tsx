@@ -38,8 +38,8 @@ export const AbilityScoreWithModifier = ({
         min={1}>
         <NumberInputField />
         <NumberInputStepper>
-          <NumberIncrementStepper border={'none'} color={'action'} />
-          <NumberDecrementStepper border={'none'} color={'action'} />
+          <NumberIncrementStepper border={'none'} color={'text.mutedDark'} />
+          <NumberDecrementStepper border={'none'} color={'text.mutedDark'} />
         </NumberInputStepper>
       </NumberInput>
       <Text
