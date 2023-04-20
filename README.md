@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+Site is hosted online and availabler [here](https://debrine.github.io/cloud-campaigns/).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
