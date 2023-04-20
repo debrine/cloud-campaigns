@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { Flex, Input, Select, Text } from '@chakra-ui/react';
+import { Flex, Select, Text } from '@chakra-ui/react';
 import { theme } from '../../theme/theme';
 
 type Props = {
