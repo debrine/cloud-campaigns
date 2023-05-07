@@ -1,4 +1,4 @@
-import { Flex, Text, Image, Box } from '@chakra-ui/react';
+import { Flex, Image, Box } from '@chakra-ui/react';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
@@ -21,7 +21,6 @@ export const EditableImage = ({ src, ...stylingProps }: Props) => {
         <FontAwesomeIcon
           className='hidden'
           icon={icon({ name: 'pen-to-square', style: 'solid' })}
-          size={'2x'}
         />
       </Box>
       <Image height={'100%'} src={src} className='blur' />

@@ -22,6 +22,11 @@ export const ExperienceBar = ({
 
   const experienceNeededToLevelUp = getExperienceNeededForLevelUp(level);
 
+  console.log(
+    'remainingExperienceForNextLevel',
+    remainingExperienceForNextLevel
+  );
+  console.log('currentLevelProgressPercentage', experienceNeededToLevelUp);
   return (
     <Flex {...stylingProps}>
       <Text>{level}</Text>

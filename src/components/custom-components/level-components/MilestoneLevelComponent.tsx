@@ -1,17 +1,27 @@
-import { Button, Flex, Heading } from '@chakra-ui/react';
+import { Box, Flex, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import React from 'react';
 import { ActiveButton } from '../buttons/ActiveButton';
 
 // TODO type levelUp function
 type Props = { level: number; levelUp: any } & { [stylingProp: string]: any };
 
-export const MilestoneLevelComponent = ({ level, ...stylingProps }: Props) => {
+export const MilestoneLevelComponent = ({
+  level,
+  levelUp,
+  ...stylingProps
+}: Props) => {
   return (
-    <Flex flexDirection={'column'} width={'fit-content'} {...stylingProps}>
-      <Heading my={'16px'} color={'experienceBar'}>
+    <Flex mt={'16px'} alignItems={'center'} {...stylingProps}>
+      {/* <Heading my={'16px'} color={'experienceBar'}>
         Level: {level}
-      </Heading>
-      <ActiveButton>Level Up</ActiveButton>
+      </Heading> */}
+      <Box width='fit-content' mr={'64px'}>
+        <Stat color={'experienceBar'}>
+          <StatLabel>Level</StatLabel>
+          <StatNumber>{level}</StatNumber>
+        </Stat>
+      </Box>
+      <ActiveButton onClick={() => levelUp()}>Level Up</ActiveButton>
     </Flex>
   );
 };

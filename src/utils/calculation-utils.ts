@@ -1,4 +1,6 @@
 import { EXPERIENCE_POINTS_PER_LEVEL } from '../constants/experience-points';
+import { SkillProficiencyLevel } from '../enums/character-sheet-enums';
+import { AbilityScoreModifiers } from '../models/character-sheet-models/ability-scores.model';
 
 /**
  *
@@ -9,6 +11,17 @@ export const calculateModifierFromAbilityScore = (
   abilityScore: number
 ): number => {
   return Math.floor((abilityScore - 10) / 2);
+};
+
+export const calculateProficiencyBonus = (level: number): number => {
+  if (level < 0) {
+    throw new Error('Level must be at least 0.');
+  }
+
+  // Proficiency bonus increases every 4 levels: levels 1-4, 5-8, 9-12, etc.
+  const proficiencyBonus = 2 + Math.floor((level - 1) / 4);
+
+  return proficiencyBonus >= 2 ? proficiencyBonus : 2;
 };
 
 export const getExperienceNeededForLevelUp = (currentLevel: number): number => {
@@ -53,4 +66,35 @@ export const calculateExperienceNeededForNextLevel = (
     remainingExperienceForNextLevel,
     currentLevelProgressPercentage,
   };
+};
+
+export const calculateSkillModifier = (
+  abilityScoreModifier: number,
+  proficiencyBonus: number,
+  proficiencyLevel: SkillProficiencyLevel
+) => {
+  if (proficiencyLevel === SkillProficiencyLevel.None) {
+    return abilityScoreModifier;
+  }
+  const modifiedProficiencyBonus =
+    proficiencyLevel === SkillProficiencyLevel.Expert
+      ? proficiencyBonus * 2
+      : proficiencyBonus;
+
+  return abilityScoreModifier + modifiedProficiencyBonus;
+};
+
+export const calculateTotalSkillModifier = (
+  abilityScoreModifier: number,
+  proficiencyBonus: number,
+  proficiencyLevel: SkillProficiencyLevel,
+  skillModifier: number
+) => {
+  const calculatedSkillModifier = calculateSkillModifier(
+    abilityScoreModifier,
+    proficiencyBonus,
+    proficiencyLevel
+  );
+
+  return calculatedSkillModifier + skillModifier;
 };

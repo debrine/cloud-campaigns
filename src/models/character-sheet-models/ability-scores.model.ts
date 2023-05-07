@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { SkillProficiencyLevel } from '../../enums/character-sheet-enums';
 
 export const AbilityScores = z.object({
   strength: z.number().min(1).max(30),
@@ -21,3 +22,8 @@ export const AbilityScoreModifiers = z.object({
 });
 
 export type AbilityScoreModifiers = z.infer<typeof AbilityScoreModifiers>;
+
+export type AbilityProficiency = {
+  abilityModifier: number;
+  proficiencyLevel: SkillProficiencyLevel;
+};
