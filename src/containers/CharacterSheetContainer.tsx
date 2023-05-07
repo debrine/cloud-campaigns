@@ -5,9 +5,18 @@ import { CharacterSheetHeader } from '../components/character-sheet/character-sh
 import { MAX_LEVEL } from '../constants/experience-points';
 import { CharacterSheetAbilityScores } from '../components/character-sheet/CharacterSheetAbilityScores';
 import { CharacterSheetBodyTabSelector } from '../components/character-sheet/character-sheet-body/CharacterSheetBodyTabSelector';
-import { calculateProficiencyBonus } from '../utils/calculation-utils';
+import {
+  calculateModifierFromAbilityScore,
+  calculateProficiencyBonus,
+} from '../utils/calculation-utils';
+import { SkillProficiencyLevel } from '../enums/character-sheet-enums';
 
 type Props = {};
+
+type AbilityProficiency = {
+  abilityModifier: number;
+  proficiencyLevel: SkillProficiencyLevel;
+};
 
 export const CharacterSheetContainer = (props: Props) => {
   const [characterName, setCharacterName] = useState('');
@@ -25,11 +34,95 @@ export const CharacterSheetContainer = (props: Props) => {
   const [wisdom, setWisdom] = useState(1);
   const [charisma, setCharisma] = useState(1);
 
-  // should this be state?
   const [proficiencyBonus, setProficiencyBonus] = useState(
     calculateProficiencyBonus(level)
   );
   const [inspiration, setInspiration] = useState(0);
+
+  // TODO is there a better way to do this?
+  // skill modifiers
+  const [acrobaticsModifier, setAcrobaticsModifier] =
+    useState<AbilityProficiency>({
+      abilityModifier: 0,
+      proficiencyLevel: SkillProficiencyLevel.None,
+    });
+  const [animalHandlingModifier, setAnimalHandlingModifier] =
+    useState<AbilityProficiency>({
+      abilityModifier: 0,
+      proficiencyLevel: SkillProficiencyLevel.None,
+    });
+  const [arcanaModifier, setArcanaModifier] = useState<AbilityProficiency>({
+    abilityModifier: 0,
+    proficiencyLevel: SkillProficiencyLevel.None,
+  });
+  const [athleticsModifier, setAthleticsModifier] =
+    useState<AbilityProficiency>({
+      abilityModifier: 0,
+      proficiencyLevel: SkillProficiencyLevel.None,
+    });
+  const [deceptionModifier, setDeceptionModifier] =
+    useState<AbilityProficiency>({
+      abilityModifier: 0,
+      proficiencyLevel: SkillProficiencyLevel.None,
+    });
+  const [historyModifier, setHistoryModifier] = useState<AbilityProficiency>({
+    abilityModifier: 0,
+    proficiencyLevel: SkillProficiencyLevel.None,
+  });
+  const [insightModifier, setInsightModifier] = useState<AbilityProficiency>({
+    abilityModifier: 0,
+    proficiencyLevel: SkillProficiencyLevel.None,
+  });
+  const [intimidationModifier, setIntimidationModifier] =
+    useState<AbilityProficiency>({
+      abilityModifier: 0,
+      proficiencyLevel: SkillProficiencyLevel.None,
+    });
+  const [investigationModifier, setInvestigationModifier] =
+    useState<AbilityProficiency>({
+      abilityModifier: 0,
+      proficiencyLevel: SkillProficiencyLevel.None,
+    });
+  const [medicineModifier, setMedicineModifier] = useState<AbilityProficiency>({
+    abilityModifier: 0,
+    proficiencyLevel: SkillProficiencyLevel.None,
+  });
+  const [natureModifier, setNatureModifier] = useState<AbilityProficiency>({
+    abilityModifier: 0,
+    proficiencyLevel: SkillProficiencyLevel.None,
+  });
+  const [perceptionModifier, setPerceptionModifier] =
+    useState<AbilityProficiency>({
+      abilityModifier: 0,
+      proficiencyLevel: SkillProficiencyLevel.None,
+    });
+  const [performanceModifier, setPerformanceModifier] =
+    useState<AbilityProficiency>({
+      abilityModifier: 0,
+      proficiencyLevel: SkillProficiencyLevel.None,
+    });
+  const [persuasionModifier, setPersuasionModifier] =
+    useState<AbilityProficiency>({
+      abilityModifier: 0,
+      proficiencyLevel: SkillProficiencyLevel.None,
+    });
+  const [religionModifier, setReligionModifier] = useState<AbilityProficiency>({
+    abilityModifier: 0,
+    proficiencyLevel: SkillProficiencyLevel.None,
+  });
+  const [sleightOfHandModifier, setSleightOfHandModifier] =
+    useState<AbilityProficiency>({
+      abilityModifier: 0,
+      proficiencyLevel: SkillProficiencyLevel.None,
+    });
+  const [stealthModifier, setStealthModifier] = useState<AbilityProficiency>({
+    abilityModifier: 0,
+    proficiencyLevel: SkillProficiencyLevel.None,
+  });
+  const [survivalModifier, setSurvivalModifier] = useState<AbilityProficiency>({
+    abilityModifier: 0,
+    proficiencyLevel: SkillProficiencyLevel.None,
+  });
 
   useEffect(() => {
     setProficiencyBonus(calculateProficiencyBonus(level));
@@ -80,7 +173,51 @@ export const CharacterSheetContainer = (props: Props) => {
           charisma={charisma}
           setCharisma={setCharisma}
         />
-        <CharacterSheetBodyTabSelector proficiencyBonus={proficiencyBonus} />
+        <CharacterSheetBodyTabSelector
+          proficiencyBonus={proficiencyBonus}
+          dexterityModifier={calculateModifierFromAbilityScore(dexterity)}
+          constitutionModifier={calculateModifierFromAbilityScore(constitution)}
+          intelligenceModifier={calculateModifierFromAbilityScore(intelligence)}
+          wisdomModifier={calculateModifierFromAbilityScore(wisdom)}
+          charismaModifier={calculateModifierFromAbilityScore(charisma)}
+          strengthModifier={calculateModifierFromAbilityScore(strength)}
+          acrobaticsModifier={acrobaticsModifier}
+          animalHandlingModifier={animalHandlingModifier}
+          arcanaModifier={arcanaModifier}
+          athleticsModifier={athleticsModifier}
+          deceptionModifier={deceptionModifier}
+          historyModifier={historyModifier}
+          insightModifier={insightModifier}
+          intimidationModifier={intimidationModifier}
+          investigationModifier={investigationModifier}
+          medicineModifier={medicineModifier}
+          natureModifier={natureModifier}
+          perceptionModifier={perceptionModifier}
+          performanceModifier={performanceModifier}
+          persuasionModifier={persuasionModifier}
+          religionModifier={religionModifier}
+          sleightOfHandModifier={sleightOfHandModifier}
+          stealthModifier={stealthModifier}
+          survivalModifier={survivalModifier}
+          setAcrobaticsModifier={setAcrobaticsModifier}
+          setAnimalHandlingModifier={setAnimalHandlingModifier}
+          setArcanaModifier={setArcanaModifier}
+          setAthleticsModifier={setAthleticsModifier}
+          setDeceptionModifier={setDeceptionModifier}
+          setHistoryModifier={setHistoryModifier}
+          setInsightModifier={setInsightModifier}
+          setIntimidationModifier={setIntimidationModifier}
+          setInvestigationModifier={setInvestigationModifier}
+          setMedicineModifier={setMedicineModifier}
+          setNatureModifier={setNatureModifier}
+          setPerceptionModifier={setPerceptionModifier}
+          setPerformanceModifier={setPerformanceModifier}
+          setPersuasionModifier={setPersuasionModifier}
+          setReligionModifier={setReligionModifier}
+          setSleightOfHandModifier={setSleightOfHandModifier}
+          setStealthModifier={setStealthModifier}
+          setSurvivalModifier={setSurvivalModifier}
+        />
       </Flex>
     </>
   );

@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { calculateModifierFromAbilityScore } from '../../utils/calculation-utils';
+import { getTextColourForPositiveNegativeNumber } from '../../utils/colour-utils';
 
 type Props = {
   abilityScore: number;
@@ -44,7 +45,7 @@ export const AbilityScoreWithModifier = ({
       </NumberInput>
       <Text
         fontSize={'l'}
-        color={modifier < 0 ? 'negative' : 'text.secondary'}
+        color={getTextColourForPositiveNegativeNumber(modifier)}
         fontWeight={900}>
         {modifier > 0 ? '+' : ''}
         {modifier}

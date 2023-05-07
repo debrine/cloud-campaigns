@@ -7,6 +7,7 @@ export const RAW_COLOURS: { [colour: string]: string[] } = {
     '#9FB8AD',
     '#1B1C27',
     '#1A202C',
+    '#4A4D61',
   ],
   blues: [
     '#9AABCA',
@@ -20,5 +21,6 @@ export const RAW_COLOURS: { [colour: string]: string[] } = {
   purples: ['#79799D', '#9300FF', '#CA8DFD'],
   whites: ['#F7F9F9'],
   blacks: ['#2C2C34', '#191A24'],
-  reds: ['#ff0000'],
+  reds: ['#CD5C5C'],
+  greens: ['#8EE3A7'],
 };

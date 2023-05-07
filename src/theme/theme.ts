@@ -11,6 +11,7 @@ export const theme = extendTheme({
       panel: RAW_COLOURS.blues[3],
       experienceBar: RAW_COLOURS.blues[6],
       divider: RAW_COLOURS.blues[0],
+      container: RAW_COLOURS.greys[7],
     },
     experienceBar: RAW_COLOURS.blues[6],
     text: {
@@ -20,6 +21,7 @@ export const theme = extendTheme({
       lightBlue: RAW_COLOURS.blues[0],
     },
     negative: RAW_COLOURS.reds[0],
+    positive: RAW_COLOURS.greens[0],
     action: RAW_COLOURS.blues[0],
     button: {
       primary: {

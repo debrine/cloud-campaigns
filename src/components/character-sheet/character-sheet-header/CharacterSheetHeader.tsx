@@ -62,7 +62,7 @@ export const CharacterSheetHeader = (props: Props) => {
             <Box>
               <Stat color='text.secondary'>
                 <StatLabel>Proficiency Bonus</StatLabel>
-                <StatNumber textAlign={'left'}>
+                <StatNumber textAlign={'left'} color={'positive'}>
                   {props.proficiencyBonus > 0
                     ? `+${props.proficiencyBonus}`
                     : props.proficiencyBonus}

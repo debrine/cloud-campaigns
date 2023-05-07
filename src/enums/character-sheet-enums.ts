@@ -83,3 +83,9 @@ export enum CharacterRace {
   Grung = 'Grung',
   Gith = 'Gith',
 }
+
+export enum SkillProficiencyLevel {
+  None = 'None',
+  Proficient = 'Proficient',
+  Expert = 'Expert',
+}

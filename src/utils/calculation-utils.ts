@@ -1,4 +1,6 @@
 import { EXPERIENCE_POINTS_PER_LEVEL } from '../constants/experience-points';
+import { SkillProficiencyLevel } from '../enums/character-sheet-enums';
+import { AbilityScoreModifiers } from '../models/character-sheet-models/ability-scores.model';
 
 /**
  *
@@ -64,4 +66,35 @@ export const calculateExperienceNeededForNextLevel = (
     remainingExperienceForNextLevel,
     currentLevelProgressPercentage,
   };
+};
+
+export const calculateSkillModifier = (
+  abilityScoreModifier: number,
+  proficiencyBonus: number,
+  proficiencyLevel: SkillProficiencyLevel
+) => {
+  if (proficiencyLevel === SkillProficiencyLevel.None) {
+    return abilityScoreModifier;
+  }
+  const modifiedProficiencyBonus =
+    proficiencyLevel === SkillProficiencyLevel.Expert
+      ? proficiencyBonus * 2
+      : proficiencyBonus;
+
+  return abilityScoreModifier + modifiedProficiencyBonus;
+};
+
+export const calculateTotalSkillModifier = (
+  abilityScoreModifier: number,
+  proficiencyBonus: number,
+  proficiencyLevel: SkillProficiencyLevel,
+  skillModifier: number
+) => {
+  const calculatedSkillModifier = calculateSkillModifier(
+    abilityScoreModifier,
+    proficiencyBonus,
+    proficiencyLevel
+  );
+
+  return calculatedSkillModifier + skillModifier;
 };
