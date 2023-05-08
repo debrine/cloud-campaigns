@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import { Flex, Select, Text } from '@chakra-ui/react';
 import { theme } from '../../theme/theme';
+import { Controller } from 'react-hook-form';
 
 type Props = {
   label: string;
@@ -53,6 +54,42 @@ export const LabelledSelect = ({
           ))}
         </Select>
       </Flex>
+    </Flex>
+  );
+};
+
+type ControlledProps = {
+  name: string;
+  control: any;
+  label: string;
+  options: string[];
+} & { [stylingProp: string]: any };
+
+export const ControlledLabelledSelect = ({
+  name,
+  label,
+  control,
+  options,
+  ...stylingProps
+}: ControlledProps) => {
+  return (
+    <Flex {...stylingProps}>
+      <Controller
+        name={name}
+        control={control}
+        render={({ field: { onChange, value } }) => (
+          <LabelledSelect
+            width={'200px'}
+            color={'text.primary'}
+            focusBorderColor='text.secondary'
+            variant={'flushed'}
+            setStateValue={onChange}
+            label={label}
+            stateValue={value}
+            options={options}
+          />
+        )}
+      />
     </Flex>
   );
 };

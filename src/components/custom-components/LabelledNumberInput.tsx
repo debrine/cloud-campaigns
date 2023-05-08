@@ -8,6 +8,7 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from '@chakra-ui/react';
+import { Controller } from 'react-hook-form';
 
 type Props = {
   label: string;
@@ -50,5 +51,31 @@ export const LabelledNumberInput = ({
         </Text>
       </Flex>
     </Flex>
+  );
+};
+
+export const ControlledLabelledNumberInput = ({
+  name,
+  label,
+  control,
+
+  ...stylingProps
+}: Props & { name: string; control: any }) => {
+  return (
+    <Controller
+      name={name}
+      control={control}
+      render={({ field: { onChange, value } }) => (
+        <LabelledNumberInput
+          width={'200px'}
+          color={'text.primary'}
+          focusBorderColor='text.secondary'
+          variant={'flushed'}
+          setStateValue={onChange}
+          label={label}
+          stateValue={value}
+        />
+      )}
+    />
   );
 };

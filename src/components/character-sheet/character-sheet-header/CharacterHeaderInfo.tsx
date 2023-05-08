@@ -1,69 +1,54 @@
 import { Flex } from '@chakra-ui/react';
 import React from 'react';
-import { LabelledInput } from '../../custom-components/LabelledInput';
-import { LabelledSelect } from '../../custom-components/LabelledSelect';
+import {
+  ControlledLabelledInput,
+  LabelledInput,
+} from '../../custom-components/LabelledInput';
+import {
+  ControlledLabelledSelect,
+  LabelledSelect,
+} from '../../custom-components/LabelledSelect';
 import {
   CharacterClass,
   CharacterRace,
 } from '../../../enums/character-sheet-enums';
 
 type Props = {
-  characterClass: string;
-  setCharacterClass: (classAndLevel: string) => void;
-  race: string;
-  setRace: (race: string) => void;
-  background: string;
-  setBackground: (background: string) => void;
-  alignment: string;
-  setAlignment: (alignment: string) => void;
-  experiencePoints: number;
-  setExperiencePoints: (experiencePoints: number) => void;
+  control: any;
 } & { [stylingProp: string]: any };
 
 // TODO change these stylings to be variants
-export const CharacterHeaderInfo = ({
-  characterClass,
-  setCharacterClass,
-  race,
-  setRace,
-  background,
-  setBackground,
-  alignment,
-  setAlignment,
-  experiencePoints,
-  setExperiencePoints,
-  ...stylingProps
-}: Props) => {
+export const CharacterHeaderInfo = ({ control, ...stylingProps }: Props) => {
   return (
     <Flex {...stylingProps}>
       <Flex flexDirection={'column'}>
-        <LabelledSelect
-          stateValue={characterClass}
-          setStateValue={setCharacterClass}
+        <ControlledLabelledSelect
+          name='characterClass'
+          control={control}
           label='Class'
           options={Object.values(CharacterClass)}
           mb={'16px'}
         />
-        <LabelledInput
-          stateValue={background}
-          setStateValue={setBackground}
+        <ControlledLabelledInput
+          name='background'
           label='Background'
+          control={control}
           mb={'16px'}
         />
       </Flex>
 
       <Flex flexDirection={'column'} mx={'16px'}>
-        <LabelledSelect
-          stateValue={race}
-          setStateValue={setRace}
+        <ControlledLabelledSelect
+          name='characterRace'
+          control={control}
           label='Race'
           options={Object.values(CharacterRace)}
           mb={'16px'}
         />
 
-        <LabelledInput
-          stateValue={alignment}
-          setStateValue={setAlignment}
+        <ControlledLabelledInput
+          name='alignment'
+          control={control}
           label='Alignment'
         />
       </Flex>

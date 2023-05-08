@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex, Input, Text } from '@chakra-ui/react';
+import { Controller } from 'react-hook-form';
 
 type Props = {
   label: string;
@@ -34,5 +35,36 @@ export const LabelledInput = ({
         </Text>
       </Flex>
     </Flex>
+  );
+};
+
+type ControlledProps = {
+  name: string;
+  control: any;
+  label: string;
+} & { [stylingProp: string]: any };
+
+export const ControlledLabelledInput = ({
+  name,
+  label,
+  control,
+  ...stylingProps
+}: ControlledProps) => {
+  return (
+    <Controller
+      name={name}
+      control={control}
+      render={({ field: { onChange, value } }) => (
+        <LabelledInput
+          width={'200px'}
+          color={'text.primary'}
+          focusBorderColor='text.secondary'
+          variant={'flushed'}
+          setStateValue={onChange}
+          label={label}
+          stateValue={value}
+        />
+      )}
+    />
   );
 };

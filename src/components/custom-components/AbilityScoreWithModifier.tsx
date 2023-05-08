@@ -10,6 +10,8 @@ import {
 import React from 'react';
 import { calculateModifierFromAbilityScore } from '../../utils/calculation-utils';
 import { getTextColourForPositiveNegativeNumber } from '../../utils/colour-utils';
+import { Controller } from 'react-hook-form';
+import { CharacterSheet } from '../../models/character-sheet-models/character-sheet.model';
 
 type Props = {
   abilityScore: number;
@@ -24,7 +26,7 @@ export const AbilityScoreWithModifier = ({
   ...stylingProps
 }: Props) => {
   const modifier = calculateModifierFromAbilityScore(abilityScore);
-
+  console.log(abilityScore, modifier);
   return (
     <Flex {...stylingProps} flexDirection={'column'} alignItems={'center'}>
       <Text color={'text.secondary'} fontWeight={700}>
@@ -51,5 +53,30 @@ export const AbilityScoreWithModifier = ({
         {modifier}
       </Text>
     </Flex>
+  );
+};
+
+export const ControlledAbilityScoreWithModifier = ({
+  name,
+  control,
+  label,
+}: {
+  name: string;
+  control: any;
+  label: string;
+}) => {
+  console.log('name', name);
+  return (
+    <Controller
+      name={name}
+      control={control}
+      render={({ field: { onChange, value } }) => (
+        <AbilityScoreWithModifier
+          abilityScore={value}
+          setAbilityScore={onChange}
+          label={label}
+        />
+      )}
+    />
   );
 };

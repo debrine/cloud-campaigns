@@ -20,10 +20,9 @@ import React, { useState } from 'react';
 import { SkillProficiencyLevel } from '../../../enums/character-sheet-enums';
 import { faChevronDown, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import { getTextColourForPositiveNegativeNumber } from '../../../utils/colour-utils';
-import { set } from 'zod';
-
+import { Controller } from 'react-hook-form';
 type ProficiencyOption = {
-  icon: React.ReactElement;
+  icon?: React.ReactElement;
   value: SkillProficiencyLevel;
   tooltipLabel: string;
 };
@@ -31,8 +30,9 @@ type ProficiencyOption = {
 type Props = {
   proficiencyOptions: ProficiencyOption[];
   skillName: string;
-  value: number;
-  setValue: (value: number) => void;
+  skillModifier: number;
+  setSkillModifier: (value: number) => void;
+  setSkillProficiencyLevel: (value: SkillProficiencyLevel) => void;
   modifierLabel?: string;
   minTextWidth?: string;
 };
@@ -42,29 +42,31 @@ export const ProficiencyListItem = ({
   skillName,
   modifierLabel,
   minTextWidth,
-  value,
-  setValue,
+  skillModifier,
+  setSkillModifier,
+  setSkillProficiencyLevel,
 }: Props) => {
   const [selectedIcon, setSelectedIcon] = useState<
     React.ReactElement | undefined
   >(undefined);
 
-  const handleSelect = (
+  const handleProficiencySelect = (
     value: SkillProficiencyLevel,
     icon?: React.ReactElement
   ) => {
-    setSelectedExpertiseLevel(value);
+    setSkillProficiencyLevel(value);
     setSelectedIcon(icon);
   };
 
   const incrementValue = () => {
-    setValue(value + 1);
+    setSkillModifier(skillModifier + 1);
   };
 
   const decrementValue = () => {
-    setValue(value - 1);
+    setSkillModifier(skillModifier - 1);
   };
 
+  console.log('skillModifier', skillModifier);
   return (
     <Flex alignItems={'center'}>
       <Menu>
@@ -81,7 +83,7 @@ export const ProficiencyListItem = ({
               <FontAwesomeIcon icon={faChevronDown} size='2xs' />
             </Box>
           }>
-          {selectedIcon}
+          {selectedIcon != null && selectedIcon}
         </MenuButton>
 
         <MenuList minWidth={'50px'}>
@@ -91,7 +93,9 @@ export const ProficiencyListItem = ({
               label={option.tooltipLabel}
               aria-label={option.tooltipLabel}>
               <MenuItem
-                onClick={() => handleSelect(option.value, option.icon)}
+                onClick={() =>
+                  handleProficiencySelect(option.value, option.icon)
+                }
                 key={option.tooltipLabel}>
                 {option.icon}
               </MenuItem>
@@ -111,9 +115,9 @@ export const ProficiencyListItem = ({
 
       <Divider orientation='vertical' mx='8px' />
       <NumberInput
-        value={value > 0 ? '+' + value : value}
+        value={skillModifier > 0 ? '+' + skillModifier : skillModifier}
         width={'80px'}
-        color={getTextColourForPositiveNegativeNumber(value)}
+        color={getTextColourForPositiveNegativeNumber(skillModifier)}
         variant={'flushed'}
         min={-5}>
         <NumberInputField />
@@ -131,5 +135,46 @@ export const ProficiencyListItem = ({
         </NumberInputStepper>
       </NumberInput>
     </Flex>
+  );
+};
+
+type ControlledProps = {
+  name: string;
+  control: any;
+  proficiencyOptions: ProficiencyOption[];
+  skillName: string;
+  skillModifier: number;
+  modifierLabel?: string;
+  minTextWidth?: string;
+};
+
+export const ControlledProficiencyListItem = ({
+  name,
+  control,
+  proficiencyOptions,
+  skillName,
+  modifierLabel,
+  minTextWidth,
+}: ControlledProps) => {
+  return (
+    <Controller
+      name={name}
+      control={control}
+      render={({ field: { onChange, value } }) => (
+        <ProficiencyListItem
+          proficiencyOptions={proficiencyOptions}
+          skillName={skillName}
+          modifierLabel={modifierLabel}
+          minTextWidth={minTextWidth}
+          skillModifier={value?.skillModifier}
+          setSkillModifier={(newValue: number) =>
+            onChange({ ...value, skillModifier: newValue })
+          }
+          setSkillProficiencyLevel={(newValue: SkillProficiencyLevel) =>
+            onChange({ ...value, skillProficiencyLevel: newValue })
+          }
+        />
+      )}
+    />
   );
 };

@@ -5,31 +5,25 @@ import { CharacterHeaderInfo } from './CharacterHeaderInfo';
 import { EditableImage } from '../../custom-components/CharacterHeaderPhoto';
 import { StyledFlexPanel } from '../../custom-components/StyledFlexPanel';
 import { CharacterHeaderLevel } from './CharacterHeaderLevel';
-import { LevellingType } from '../../../enums/character-sheet-enums';
+import {
+  CharacterClass,
+  CharacterRace,
+  LevellingType,
+} from '../../../enums/character-sheet-enums';
 import { LabelledNumberInput } from '../../custom-components/LabelledNumberInput';
+import { CharacterSheet } from '../../../models/character-sheet-models/character-sheet.model';
+import { ControlledLabelledInput } from '../../custom-components/LabelledInput';
+import { calculateProficiencyBonus } from '../../../utils/calculation-utils';
 
 type Props = {
-  characterName: string;
-  setCharacterName: (name: string) => void;
-  characterClass: string;
-  setCharacterClass: (classAndLevel: string) => void;
-  race: string;
-  setRace: (race: string) => void;
-  background: string;
-  setBackground: (background: string) => void;
-  alignment: string;
-  setAlignment: (alignment: string) => void;
-  experiencePoints: number;
-  setExperiencePoints: (experiencePoints: number) => void;
+  control: any; // TODO - type this
   level: number;
-  setLevel: (level: number) => void;
-  levelUp: any; // TODO type this to level up function
-  proficiencyBonus: number;
-  inspiration: number;
-  setInspiration: (inspiration: number) => void;
+  levelUp: () => void;
 };
 
-export const CharacterSheetHeader = (props: Props) => {
+export const CharacterSheetHeader = ({ control, level, levelUp }: Props) => {
+  const proficiencyBonus = calculateProficiencyBonus(level);
+
   return (
     <>
       <StyledFlexPanel mb={'16px'} justifyContent={'space-between'}>
@@ -40,50 +34,37 @@ export const CharacterSheetHeader = (props: Props) => {
             mx='16px'
           />
           <Flex flexDirection={'column'} m={'16px'}>
-            <CharacterSheetName
-              characterName={props.characterName}
-              setCharacterName={props.setCharacterName}
-              pr={'16px'}
+            <ControlledLabelledInput
+              label='Character Name'
+              name='characterName'
+              control={control}
             />
             <CharacterHeaderLevel
               levelType={LevellingType.Milestone}
-              level={props.level}
-              experience={props.experiencePoints}
-              levelUp={props.levelUp}
+              level={level}
+              levelUp={levelUp}
             />
           </Flex>
           <Flex flexDirection={'column'} m={'16px'}>
-            <LabelledNumberInput
+            {/* <LabelledNumberInput
               label={'Inspiration'}
               stateValue={props.inspiration}
-              setStateValue={props.setInspiration}
+              setStateValue={props.getUpdaterForField('inspiration')}
               mb={'16px'}
-            />
+            /> */}
             <Box>
               <Stat color='text.secondary'>
                 <StatLabel>Proficiency Bonus</StatLabel>
                 <StatNumber textAlign={'left'} color={'positive'}>
-                  {props.proficiencyBonus > 0
-                    ? `+${props.proficiencyBonus}`
-                    : props.proficiencyBonus}
+                  {proficiencyBonus > 0
+                    ? `+${proficiencyBonus}`
+                    : proficiencyBonus}
                 </StatNumber>
               </Stat>
             </Box>
           </Flex>
         </Flex>
-        <CharacterHeaderInfo
-          my={'16px'}
-          characterClass={props.characterClass}
-          setCharacterClass={props.setCharacterClass}
-          race={props.race}
-          setRace={props.setRace}
-          background={props.background}
-          setBackground={props.setBackground}
-          alignment={props.alignment}
-          setAlignment={props.setAlignment}
-          experiencePoints={props.experiencePoints}
-          setExperiencePoints={props.setExperiencePoints}
-        />
+        <CharacterHeaderInfo my={'16px'} control={control} />
       </StyledFlexPanel>
     </>
   );

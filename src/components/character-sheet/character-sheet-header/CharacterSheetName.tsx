@@ -2,20 +2,14 @@ import React from 'react';
 import { LabelledInput } from '../../custom-components/LabelledInput';
 
 type Props = {
-  characterName: string;
-  setCharacterName: (value: string) => void;
+  register: any; // TODO type this to register function
 } & { [stylingProp: string]: any };
 
-export const CharacterSheetName = ({
-  characterName,
-  setCharacterName,
-  ...stylingProps
-}: Props) => {
+export const CharacterSheetName = ({ register, ...stylingProps }: Props) => {
   return (
     <LabelledInput
       label={'Character Name'}
-      stateValue={characterName}
-      setStateValue={setCharacterName}
+      {...register('characterName')}
       {...stylingProps}
     />
   );

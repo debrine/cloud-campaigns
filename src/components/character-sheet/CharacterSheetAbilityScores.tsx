@@ -1,77 +1,56 @@
 import React from 'react';
 import { StyledFlexPanel } from '../custom-components/StyledFlexPanel';
-import { AbilityScoreWithModifier } from '../custom-components/AbilityScoreWithModifier';
+import {
+  AbilityScoreWithModifier,
+  ControlledAbilityScoreWithModifier,
+} from '../custom-components/AbilityScoreWithModifier';
 import { Divider } from '@chakra-ui/react';
 
 type Props = {
-  strength: number;
-  setStrength: (value: number) => void;
-  dexterity: number;
-  setDexterity: (value: number) => void;
-  constitution: number;
-  setConstitution: (value: number) => void;
-  intelligence: number;
-  setIntelligence: (value: number) => void;
-  wisdom: number;
-  setWisdom: (value: number) => void;
-  charisma: number;
-  setCharisma: (value: number) => void;
+  control: any; // TODO type this to control function
 };
 
-export const CharacterSheetAbilityScores = ({
-  strength,
-  setStrength,
-  dexterity,
-  setDexterity,
-  constitution,
-  setConstitution,
-  intelligence,
-  setIntelligence,
-  wisdom,
-  setWisdom,
-  charisma,
-  setCharisma,
-}: Props) => {
+export const CharacterSheetAbilityScores = ({ control }: Props) => {
   return (
     <StyledFlexPanel flexDirection={'column'} width={'fit-content'}>
-      <AbilityScoreWithModifier
-        abilityScore={strength}
-        setAbilityScore={setStrength}
+      <ControlledAbilityScoreWithModifier
+        name={'abilityScores.strength'}
         label={'Strength'}
+        control={control}
       />
       <Divider my={'8px'} />
-      <AbilityScoreWithModifier
-        abilityScore={dexterity}
-        setAbilityScore={setDexterity}
+      <ControlledAbilityScoreWithModifier
+        name={'abilityScores.dexterity'}
+        control={control}
         label={'Dexterity'}
       />
       <Divider my={'8px'} />
 
-      <AbilityScoreWithModifier
-        abilityScore={constitution}
-        setAbilityScore={setConstitution}
+      <ControlledAbilityScoreWithModifier
+        name={'abilityScores.constitution'}
+        control={control}
         label={'Constitution'}
       />
       <Divider my={'8px'} />
 
-      <AbilityScoreWithModifier
-        abilityScore={intelligence}
-        setAbilityScore={setIntelligence}
+      <ControlledAbilityScoreWithModifier
+        name={'abilityScores.intelligence'}
+        control={control}
         label={'Intelligence'}
       />
       <Divider my={'8px'} />
 
-      <AbilityScoreWithModifier
-        abilityScore={wisdom}
-        setAbilityScore={setWisdom}
+      <ControlledAbilityScoreWithModifier
         label={'Wisdom'}
+        name={'abilityScores.wisdom'}
+        control={control}
       />
       <Divider my={'8px'} />
 
-      <AbilityScoreWithModifier
-        abilityScore={charisma}
-        setAbilityScore={setCharisma}
+      <ControlledAbilityScoreWithModifier
         label={'Charisma'}
+        name={'abilityScores.charisma'}
+        control={control}
       />
     </StyledFlexPanel>
   );
