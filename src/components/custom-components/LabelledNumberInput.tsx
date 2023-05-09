@@ -24,6 +24,7 @@ export const LabelledNumberInput = ({
   max,
   ...stylingProps
 }: Props) => {
+  console.log('stateValue', stateValue);
   return (
     <Flex {...stylingProps}>
       <Flex flexDirection={'column'}>
