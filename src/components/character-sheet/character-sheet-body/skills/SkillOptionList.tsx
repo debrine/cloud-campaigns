@@ -31,6 +31,7 @@ export const SkillOptionList = ({
 }: Props) => {
   // Display a loading message if the skills data is not available yet
   console.log('skills', skills);
+  console.log('abilityScoreModifiers', abilityScoreModifiers);
 
   return (
     <Flex flexDirection={'column'}>
