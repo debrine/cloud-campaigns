@@ -36,6 +36,8 @@ type Props = {
   // add in fetching expertise levels
 };
 
+console.log('SkillOptionItem');
+
 type IconType = React.ReactElement | undefined;
 
 // TODO make this less big
