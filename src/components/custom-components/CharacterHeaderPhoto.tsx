@@ -9,6 +9,7 @@ type Props = {
 } & { [stylingProp: string]: any };
 
 export const EditableImage = ({ src, ...stylingProps }: Props) => {
+  console.log('src', src);
   return (
     <Flex {...stylingProps} position={'relative'} className='hiddenContainer'>
       <Box
