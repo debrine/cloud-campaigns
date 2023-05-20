@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import {
-  AbilityScoreModifiers,
   AbilityScores,
+  SavingThrowProficiencies,
   Skills,
 } from './ability-scores.model';
 import { CharacterSummaryModel } from './character-summary.model';
@@ -16,7 +16,6 @@ export const CharacterSheet = z.object({
   characterClass: z.nativeEnum(CharacterClass),
   characterLevel: z.number().min(0).max(20).default(1),
   abilityScores: AbilityScores,
-  abilityScoreModifiers: AbilityScoreModifiers,
   proficiencyBonus: z.number().min(0).max(10).default(2),
   alignment: z.string(),
   background: z.string(),
@@ -29,6 +28,7 @@ export const CharacterSheet = z.object({
   speed: z.number().min(0).default(30),
   hitPoints: z.number().min(0).default(0),
   partyMembers: z.array(CharacterSummaryModel).default([]),
+  savingThrowProficiencies: SavingThrowProficiencies,
 });
 
 export type CharacterSheet = z.infer<typeof CharacterSheet>;

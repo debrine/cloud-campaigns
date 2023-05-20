@@ -31,7 +31,8 @@ type Props = {
   proficiencyOptions: ProficiencyOption[];
   skillName: string;
   skillModifier: number;
-  setSkillModifier: (value: number) => void;
+  incrementSkillModifier: () => void;
+  decrementSkillModifier: () => void;
   setSkillProficiencyLevel: (value: SkillProficiencyLevel) => void;
   modifierLabel?: string;
   minTextWidth?: string;
@@ -43,7 +44,8 @@ export const ProficiencyListItem = ({
   modifierLabel,
   minTextWidth,
   skillModifier,
-  setSkillModifier,
+  incrementSkillModifier,
+  decrementSkillModifier,
   setSkillProficiencyLevel,
 }: Props) => {
   const [selectedIcon, setSelectedIcon] = useState<
@@ -58,15 +60,6 @@ export const ProficiencyListItem = ({
     setSelectedIcon(icon);
   };
 
-  const incrementValue = () => {
-    setSkillModifier(skillModifier + 1);
-  };
-
-  const decrementValue = () => {
-    setSkillModifier(skillModifier - 1);
-  };
-
-  console.log('skillModifier', skillModifier);
   return (
     <Flex alignItems={'center'}>
       <Menu>
@@ -78,9 +71,10 @@ export const ProficiencyListItem = ({
           height={'fit-content'}
           width={'fit-content'}
           minWidth={'46px'}
+          color={'gold'}
           rightIcon={
             <Box>
-              <FontAwesomeIcon icon={faChevronDown} size='2xs' />
+              <FontAwesomeIcon icon={faChevronDown} size='2xs' color='black' />
             </Box>
           }>
           {selectedIcon != null && selectedIcon}
@@ -96,6 +90,7 @@ export const ProficiencyListItem = ({
                 onClick={() =>
                   handleProficiencySelect(option.value, option.icon)
                 }
+                color={'gold'}
                 key={option.tooltipLabel}>
                 {option.icon}
               </MenuItem>
@@ -125,12 +120,12 @@ export const ProficiencyListItem = ({
           <NumberIncrementStepper
             border={'none'}
             color={'text.mutedDark'}
-            onClick={() => incrementValue()}
+            onClick={() => incrementSkillModifier()}
           />
           <NumberDecrementStepper
             border={'none'}
             color={'text.mutedDark'}
-            onClick={() => decrementValue()}
+            onClick={() => decrementSkillModifier()}
           />
         </NumberInputStepper>
       </NumberInput>
@@ -155,6 +150,7 @@ export const ControlledProficiencyListItem = ({
   skillName,
   modifierLabel,
   minTextWidth,
+  skillModifier,
 }: ControlledProps) => {
   return (
     <Controller
@@ -166,9 +162,18 @@ export const ControlledProficiencyListItem = ({
           skillName={skillName}
           modifierLabel={modifierLabel}
           minTextWidth={minTextWidth}
-          skillModifier={value?.skillModifier}
-          setSkillModifier={(newValue: number) =>
-            onChange({ ...value, skillModifier: newValue })
+          skillModifier={skillModifier}
+          incrementSkillModifier={() =>
+            onChange({
+              ...value,
+              skillModifier: value.skillModifier + 1,
+            })
+          }
+          decrementSkillModifier={() =>
+            onChange({
+              ...value,
+              skillModifier: value.skillModifier - 1,
+            })
           }
           setSkillProficiencyLevel={(newValue: SkillProficiencyLevel) =>
             onChange({ ...value, skillProficiencyLevel: newValue })

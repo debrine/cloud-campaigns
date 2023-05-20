@@ -1,7 +1,7 @@
 import { CharacterClass, CharacterRace } from '../enums/character-sheet-enums';
 import {
-  AbilityScoreModifiers,
   AbilityScores,
+  SavingThrowProficiencies,
   Skills,
 } from '../models/character-sheet-models/ability-scores.model';
 import { CharacterSheet } from '../models/character-sheet-models/character-sheet.model';
@@ -16,7 +16,6 @@ export class CharacterSheetRepository {
       background: 'Outlander',
       race: CharacterRace.Dragonborn,
       abilityScores: AbilityScores.parse({}),
-      abilityScoreModifiers: AbilityScoreModifiers.parse({}),
       skills: Skills.parse({}),
       partyMembers: [
         {
@@ -28,6 +27,7 @@ export class CharacterSheetRepository {
           characterRace: CharacterRace.Dragonborn,
         },
       ],
+      savingThrowProficiency: SavingThrowProficiencies.parse({}),
     });
   }
 }

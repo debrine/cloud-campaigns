@@ -7,7 +7,7 @@ import {
   ProficiencyListItem,
 } from '../../../custom-components/list-components/ProficiencyItem';
 import {
-  AbilityScoreModifiers,
+  AbilityScores,
   Skills,
 } from '../../../../models/character-sheet-models/ability-scores.model';
 import { calculateTotalSkillModifier } from '../../../../utils/calculation-utils';
@@ -20,21 +20,18 @@ type Props = {
   proficiencyBonus: number;
   control: any;
   skills: Skills;
-  abilityScoreModifiers: AbilityScoreModifiers;
-};
+  abilityScores: AbilityScores;
+} & { [stylingProp: string]: any };
 
 export const SkillOptionList = ({
   skills,
-  abilityScoreModifiers,
+  abilityScores,
   control,
-  ...props
+  proficiencyBonus,
+  ...stylingProps
 }: Props) => {
-  // Display a loading message if the skills data is not available yet
-  console.log('skills', skills);
-  console.log('abilityScoreModifiers', abilityScoreModifiers);
-
   return (
-    <Flex flexDirection={'column'}>
+    <Flex flexDirection={'column'} {...stylingProps}>
       <Heading color={'text.secondary'} textAlign={'left'}>
         Skills
       </Heading>
@@ -45,7 +42,6 @@ export const SkillOptionList = ({
         {Object.values(skills)
           .filter((val) => val != null)
           .map((skillDetails) => {
-            console.log('skillDetails', skillDetails);
             return (
               <ControlledProficiencyListItem
                 key={skillDetails.skillName}
@@ -56,10 +52,10 @@ export const SkillOptionList = ({
                 control={control}
                 skillName={skillDetails.skillName}
                 skillModifier={calculateTotalSkillModifier(
-                  abilityScoreModifiers[
-                    skillDetails.skillAbility as keyof typeof abilityScoreModifiers
-                  ],
-                  props.proficiencyBonus,
+                  abilityScores[
+                    skillDetails.skillAbility as keyof AbilityScores
+                  ].abilityModifier,
+                  proficiencyBonus,
                   skillDetails.skillProficiencyLevel,
                   skillDetails.skillModifier
                 )}
@@ -68,7 +64,7 @@ export const SkillOptionList = ({
                     skillDetails.skillAbility as keyof typeof abilityLabelFromAbilityName
                   ]
                 }
-                minTextWidth='185px'
+                minTextWidth='190px'
                 proficiencyOptions={[
                   { value: SkillProficiencyLevel.None, tooltipLabel: 'None' },
                   {

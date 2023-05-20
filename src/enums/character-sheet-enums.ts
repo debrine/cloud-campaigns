@@ -90,7 +90,7 @@ export enum SkillProficiencyLevel {
   Expert = 'Expert',
 }
 
-export enum Ability {
+export enum AbilityType {
   Strength = 'strength',
   Dexterity = 'dexterity',
   Constitution = 'constitution',

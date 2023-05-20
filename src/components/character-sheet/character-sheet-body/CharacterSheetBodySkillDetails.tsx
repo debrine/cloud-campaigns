@@ -1,28 +1,35 @@
 import { Flex } from '@chakra-ui/layout';
 import React from 'react';
-import { SkillOptionItem } from './skills/SkillOptionItem';
 import { SkillOptionList } from './skills/SkillOptionList';
 import {
-  AbilityScoreModifiers,
+  AbilityScores,
   Skills,
 } from '../../../models/character-sheet-models/ability-scores.model';
+import { SavingThrowsList } from './skills/SavingThrowsList';
 
 type Props = {
   proficiencyBonus: number;
   skills: Skills;
   control: any;
-  abilityScoreModifiers: AbilityScoreModifiers;
+  abilityScores: AbilityScores;
 };
 
-export const CharacterSheetBodySkillDetails = (props: Props) => {
+export const CharacterSheetBodySkillDetails = ({
+  proficiencyBonus,
+  skills,
+  control,
+  abilityScores,
+}: Props) => {
   return (
     <Flex>
       <SkillOptionList
-        proficiencyBonus={props.proficiencyBonus}
-        control={props.control}
-        skills={props.skills}
-        abilityScoreModifiers={props.abilityScoreModifiers}
+        proficiencyBonus={proficiencyBonus}
+        control={control}
+        skills={skills}
+        abilityScores={abilityScores}
+        mr={'32px'}
       />
+      <SavingThrowsList abilityScores={abilityScores} control={control} />
     </Flex>
   );
 };

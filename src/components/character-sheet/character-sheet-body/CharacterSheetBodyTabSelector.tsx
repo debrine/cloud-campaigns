@@ -4,7 +4,7 @@ import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import { CharacterSheetBodySkillDetails } from './CharacterSheetBodySkillDetails';
 import { CharacterSheetBodyPartyDetails } from './party/CharacterSheetBodyPartyDetails';
 import {
-  AbilityScoreModifiers,
+  AbilityScores,
   Skills,
 } from '../../../models/character-sheet-models/ability-scores.model';
 
@@ -13,10 +13,15 @@ type Props = {
   proficiencyBonus: number;
   skills: Skills;
   control: any;
-  abilityScoreModifiers: AbilityScoreModifiers;
+  abilityScores: AbilityScores;
 };
 
-export const CharacterSheetBodyTabSelector = (props: Props) => {
+export const CharacterSheetBodyTabSelector = ({
+  proficiencyBonus,
+  skills,
+  control,
+  abilityScores,
+}: Props) => {
   return (
     <StyledFlexPanel ml={'16px'}>
       <Tabs width={'100%'} align='center'>
@@ -32,10 +37,10 @@ export const CharacterSheetBodyTabSelector = (props: Props) => {
         <TabPanels>
           <TabPanel>
             <CharacterSheetBodySkillDetails
-              proficiencyBonus={props.proficiencyBonus}
-              skills={props.skills}
-              control={props.control}
-              abilityScoreModifiers={props.abilityScoreModifiers}
+              proficiencyBonus={proficiencyBonus}
+              skills={skills}
+              control={control}
+              abilityScores={abilityScores}
             />
           </TabPanel>
           <TabPanel>

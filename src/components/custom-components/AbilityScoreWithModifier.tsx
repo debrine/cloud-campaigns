@@ -12,21 +12,23 @@ import { calculateModifierFromAbilityScore } from '../../utils/calculation-utils
 import { getTextColourForPositiveNegativeNumber } from '../../utils/colour-utils';
 import { Controller } from 'react-hook-form';
 import { CharacterSheet } from '../../models/character-sheet-models/character-sheet.model';
+import { AbilityScoreWithModifier } from '../../models/character-sheet-models/ability-scores.model';
 
 type Props = {
   abilityScore: number;
+  abilityModifier: number;
   setAbilityScore: (value: number) => void;
   label: string;
 } & { [stylingProp: string]: any };
 
-export const AbilityScoreWithModifier = ({
+export const AbilityScoreInputWithModifier = ({
   abilityScore,
   setAbilityScore,
   label,
+  abilityModifier,
   ...stylingProps
 }: Props) => {
-  const modifier = calculateModifierFromAbilityScore(abilityScore);
-  console.log(abilityScore, modifier);
+  console.log('ability score', abilityScore);
   return (
     <Flex {...stylingProps} flexDirection={'column'} alignItems={'center'}>
       <Text color={'text.secondary'} fontWeight={700}>
@@ -47,10 +49,10 @@ export const AbilityScoreWithModifier = ({
       </NumberInput>
       <Text
         fontSize={'l'}
-        color={getTextColourForPositiveNegativeNumber(modifier)}
+        color={getTextColourForPositiveNegativeNumber(abilityModifier)}
         fontWeight={900}>
-        {modifier > 0 ? '+' : ''}
-        {modifier}
+        {abilityModifier > 0 ? '+' : ''}
+        {abilityModifier}
       </Text>
     </Flex>
   );
@@ -59,22 +61,25 @@ export const AbilityScoreWithModifier = ({
 export const ControlledAbilityScoreWithModifier = ({
   name,
   control,
-  label,
 }: {
   name: string;
   control: any;
-  label: string;
 }) => {
-  console.log('name', name);
   return (
     <Controller
       name={name}
       control={control}
       render={({ field: { onChange, value } }) => (
-        <AbilityScoreWithModifier
-          abilityScore={value}
-          setAbilityScore={onChange}
-          label={label}
+        <AbilityScoreInputWithModifier
+          abilityScore={value.abilityScore}
+          label={value.abilityName}
+          abilityModifier={value.abilityModifier}
+          setAbilityScore={(newValue: number) =>
+            onChange({
+              abilityScore: newValue,
+              abilityModifier: calculateModifierFromAbilityScore(newValue),
+            })
+          }
         />
       )}
     />

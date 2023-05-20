@@ -1,6 +1,5 @@
 import { EXPERIENCE_POINTS_PER_LEVEL } from '../constants/experience-points';
 import { SkillProficiencyLevel } from '../enums/character-sheet-enums';
-import { AbilityScoreModifiers } from '../models/character-sheet-models/ability-scores.model';
 
 /**
  *

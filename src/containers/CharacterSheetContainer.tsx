@@ -5,21 +5,13 @@ import { CharacterSheetHeader } from '../components/character-sheet/character-sh
 import { MAX_LEVEL } from '../constants/experience-points';
 import { CharacterSheetAbilityScores } from '../components/character-sheet/CharacterSheetAbilityScores';
 import { CharacterSheetBodyTabSelector } from '../components/character-sheet/character-sheet-body/CharacterSheetBodyTabSelector';
-import {
-  calculateModifierFromAbilityScore,
-  calculateProficiencyBonus,
-} from '../utils/calculation-utils';
-import {
-  CharacterClass,
-  CharacterRace,
-  SkillProficiencyLevel,
-} from '../enums/character-sheet-enums';
+import { CharacterClass, CharacterRace } from '../enums/character-sheet-enums';
 import { CharacterSheetRepository } from '../repository/character-sheet-repository';
 import { CharacterSheet } from '../models/character-sheet-models/character-sheet.model';
 import { useForm } from 'react-hook-form';
 import {
-  AbilityScoreModifiers,
   AbilityScores,
+  SavingThrowProficiencies,
   Skills,
 } from '../models/character-sheet-models/ability-scores.model';
 
@@ -34,7 +26,6 @@ const getInitialCharacterSheet = (): CharacterSheet => {
     background: 'Outlander',
     race: CharacterRace.Dragonborn,
     abilityScores: AbilityScores.parse({}),
-    abilityScoreModifiers: AbilityScoreModifiers.parse({}),
     skills: Skills.parse({}),
     partyMembers: [
       {
@@ -46,6 +37,7 @@ const getInitialCharacterSheet = (): CharacterSheet => {
         characterRace: CharacterRace.Dragonborn,
       },
     ],
+    savingThrowProficiencies: SavingThrowProficiencies.parse({}),
   });
 };
 
@@ -79,6 +71,10 @@ export const CharacterSheetContainer = (props: Props) => {
 
   const watchedFormData = watch();
 
+  useEffect(() => {
+    console.log('new form data', watchedFormData);
+  }, [watchedFormData]);
+
   // update this to be a backend function call
   const levelUp = () => {
     const newLevel =
@@ -102,7 +98,7 @@ export const CharacterSheetContainer = (props: Props) => {
         <CharacterSheetBodyTabSelector
           proficiencyBonus={watchedFormData.proficiencyBonus}
           skills={watchedFormData.skills}
-          abilityScoreModifiers={watchedFormData.abilityScoreModifiers}
+          abilityScores={watchedFormData.abilityScores}
           control={control}
         />
       </Flex>
