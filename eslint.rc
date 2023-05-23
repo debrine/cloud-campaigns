@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "@typescript-eslint/no-redeclare": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "no-redeclare": "off"
+      }
+    }
+  ]
+}
