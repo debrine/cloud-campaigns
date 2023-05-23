@@ -5,7 +5,6 @@ import {
 } from '../../../../models/character-sheet-models/ability.model';
 import { Flex, Heading, Text } from '@chakra-ui/react';
 import { StyledFlexPanel } from '../../../custom-components/StyledFlexPanel';
-import { AbilityListItem } from './AbilityListItem';
 import { AbilityList } from './AbilityList';
 import {
   faMagicWandSparkles,

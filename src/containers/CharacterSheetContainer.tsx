@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Flex } from '@chakra-ui/react';
 import { CharacterSheetHeader } from '../components/character-sheet/character-sheet-header/CharacterSheetHeader';
@@ -118,7 +118,7 @@ export const CharacterSheetContainer = (props: Props) => {
       setExistingCharacterSheet(characterSheet);
     };
     getCharacterSheet();
-  }, []);
+  });
 
   useEffect(() => {
     if (existingCharacterSheet) {

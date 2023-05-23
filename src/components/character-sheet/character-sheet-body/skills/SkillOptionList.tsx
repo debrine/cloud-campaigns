@@ -1,11 +1,7 @@
 import { Flex, Heading } from '@chakra-ui/react';
 import React from 'react';
-import { SkillOptionItem } from './SkillOptionItem';
 import { StyledFlexPanel } from '../../../custom-components/StyledFlexPanel';
-import {
-  ControlledProficiencyListItem,
-  ProficiencyListItem,
-} from '../../../custom-components/list-components/ProficiencyItem';
+import { ControlledProficiencyListItem } from '../../../custom-components/list-components/ProficiencyItem';
 import {
   AbilityScores,
   Skills,

@@ -9,12 +9,11 @@ import {
   Box,
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import {
   Ability,
   AbilityClass,
 } from '../../../../models/character-sheet-models/ability.model';
-import { IconDefinition, IconName } from '@fortawesome/fontawesome-svg-core';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faMagicWandSparkles,
   faPeopleGroup,

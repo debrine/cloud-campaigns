@@ -11,8 +11,6 @@ import React from 'react';
 import { calculateModifierFromAbilityScore } from '../../utils/calculation-utils';
 import { getTextColourForPositiveNegativeNumber } from '../../utils/colour-utils';
 import { Controller } from 'react-hook-form';
-import { CharacterSheet } from '../../models/character-sheet-models/character-sheet.model';
-import { AbilityScoreWithModifier } from '../../models/character-sheet-models/ability-scores.model';
 
 type Props = {
   abilityScore: number;

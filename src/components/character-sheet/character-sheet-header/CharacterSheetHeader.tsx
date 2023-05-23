@@ -1,17 +1,10 @@
 import { Box, Flex, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import React from 'react';
-import { CharacterSheetName } from './CharacterSheetName';
 import { CharacterHeaderInfo } from './CharacterHeaderInfo';
 import { EditableImage } from '../../custom-components/CharacterHeaderPhoto';
 import { StyledFlexPanel } from '../../custom-components/StyledFlexPanel';
 import { CharacterHeaderLevel } from './CharacterHeaderLevel';
-import {
-  CharacterClass,
-  CharacterRace,
-  LevellingType,
-} from '../../../enums/character-sheet-enums';
-import { LabelledNumberInput } from '../../custom-components/LabelledNumberInput';
-import { CharacterSheet } from '../../../models/character-sheet-models/character-sheet.model';
+import { LevellingType } from '../../../enums/character-sheet-enums';
 import { ControlledLabelledInput } from '../../custom-components/LabelledInput';
 import { calculateProficiencyBonus } from '../../../utils/calculation-utils';
 

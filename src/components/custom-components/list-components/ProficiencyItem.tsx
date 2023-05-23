@@ -18,7 +18,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { SkillProficiencyLevel } from '../../../enums/character-sheet-enums';
-import { faChevronDown, faStarHalf } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { getTextColourForPositiveNegativeNumber } from '../../../utils/colour-utils';
 import { Controller } from 'react-hook-form';
 type ProficiencyOption = {

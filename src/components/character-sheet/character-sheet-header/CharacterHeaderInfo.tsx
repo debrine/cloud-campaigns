@@ -1,13 +1,7 @@
 import { Flex } from '@chakra-ui/react';
 import React from 'react';
-import {
-  ControlledLabelledInput,
-  LabelledInput,
-} from '../../custom-components/LabelledInput';
-import {
-  ControlledLabelledSelect,
-  LabelledSelect,
-} from '../../custom-components/LabelledSelect';
+import { ControlledLabelledInput } from '../../custom-components/LabelledInput';
+import { ControlledLabelledSelect } from '../../custom-components/LabelledSelect';
 import {
   CharacterClass,
   CharacterRace,
