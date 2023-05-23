@@ -9,6 +9,7 @@ import {
   CharacterClass,
   CharacterRace,
 } from '../../enums/character-sheet-enums';
+import { Ability } from './ability.model';
 
 export const CharacterSheet = z.object({
   characterName: z.string(),
@@ -29,6 +30,19 @@ export const CharacterSheet = z.object({
   hitPoints: z.number().min(0).default(0),
   partyMembers: z.array(CharacterSummaryModel).default([]),
   savingThrowProficiencies: SavingThrowProficiencies,
+  abilities: z
+    .object({
+      class: z.array(Ability).default([]),
+      racial: z.array(Ability).default([]),
+      feat: z.array(Ability).default([]),
+      item: z.array(Ability).default([]),
+    })
+    .default({
+      class: [],
+      racial: [],
+      feat: [],
+      item: [],
+    }),
 });
 
 export type CharacterSheet = z.infer<typeof CharacterSheet>;

@@ -43,7 +43,10 @@ export const CharacterSheetPartyMemberListItem = ({
         <AccordionButton>
           <Flex flex='1' textAlign='left' color='text.primary' my={'4px'}>
             <Flex flexDirection={'column'} width={'200px'}>
-              <Text color={'text.primary'} fontWeight={700}>
+              <Text
+                color={'text.primary'}
+                fontWeight={700}
+                _expanded={{ display: 'none' }}>
                 {characterName}
               </Text>
               <Text fontStyle={'italic'} color={'text.secondary'}>
