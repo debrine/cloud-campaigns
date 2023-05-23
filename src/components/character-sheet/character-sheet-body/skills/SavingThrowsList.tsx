@@ -10,11 +10,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 type Props = {
   abilityScores: AbilityScores;
   control: any;
-};
+} & { [stylingProp: string]: any };
 
-export const SavingThrowsList = ({ abilityScores, control }: Props) => {
+export const SavingThrowsList = ({
+  abilityScores,
+  control,
+  ...stylingProps
+}: Props) => {
   return (
-    <Flex flexDirection={'column'}>
+    <Flex flexDirection={'column'} {...stylingProps}>
       <Heading color={'text.secondary'} textAlign={'left'}>
         Saving Throws
       </Heading>
@@ -35,7 +39,7 @@ export const SavingThrowsList = ({ abilityScores, control }: Props) => {
               ]}
               skillName={abilityName}
               skillModifier={0}
-              minTextWidth='120px'
+              minTextWidth='190px'
             />
           );
         })}

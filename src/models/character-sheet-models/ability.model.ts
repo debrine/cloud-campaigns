@@ -14,10 +14,10 @@ export const Ability = z.object({
   isCombat: z.boolean(),
   isPassive: z.boolean(),
   range: z.number().optional(),
-  cooldown: z.number().optional(),
+  cooldown: z.string().optional(),
   charges: z.number().optional(),
-  duration: z.number().optional(),
-  damage: z.number().optional(),
+  duration: z.string().optional(),
+  damage: z.string().optional(),
   damageType: z.string().optional(),
 });
 

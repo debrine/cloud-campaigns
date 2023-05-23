@@ -7,6 +7,7 @@ import {
   AbilityScores,
   Skills,
 } from '../../../models/character-sheet-models/ability-scores.model';
+import { CharacterSheet } from '../../../models/character-sheet-models/character-sheet.model';
 
 // should all skill stuff be in a type?
 type Props = {
@@ -14,6 +15,7 @@ type Props = {
   skills: Skills;
   control: any;
   abilityScores: AbilityScores;
+  abilities: CharacterSheet['abilities'];
 };
 
 export const CharacterSheetBodyTabSelector = ({
@@ -21,6 +23,7 @@ export const CharacterSheetBodyTabSelector = ({
   skills,
   control,
   abilityScores,
+  abilities,
 }: Props) => {
   return (
     <StyledFlexPanel ml={'16px'}>
@@ -41,6 +44,7 @@ export const CharacterSheetBodyTabSelector = ({
               skills={skills}
               control={control}
               abilityScores={abilityScores}
+              abilities={abilities}
             />
           </TabPanel>
           <TabPanel>
