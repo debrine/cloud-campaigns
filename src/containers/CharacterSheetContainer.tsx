@@ -18,6 +18,7 @@ import { AbilityClass } from '../models/character-sheet-models/ability.model';
 
 type Props = {};
 
+// get rid of this
 const getInitialCharacterSheet = (): CharacterSheet => {
   return CharacterSheet.parse({
     characterName: 'Test Character',
