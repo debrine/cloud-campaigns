@@ -19,7 +19,6 @@ import {
   faPeopleGroup,
   faLockOpen,
   faFlask,
-  faGun,
   faFistRaised,
 } from '@fortawesome/free-solid-svg-icons';
 

@@ -131,7 +131,7 @@ export const CharacterSheetContainer = (props: Props) => {
     if (existingCharacterSheet) {
       reset(existingCharacterSheet);
     }
-  }, [existingCharacterSheet]);
+  }, [existingCharacterSheet, reset]);
 
   const watchedFormData = watch();
 

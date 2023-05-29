@@ -36,9 +36,9 @@ export const AbilityContainer = ({
 }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [formState, setFormState] = useState<FormState>(FormState.New);
-  const [currentAbilityToEdit, setCurrentAbilityToEdit] = useState<
-    Ability | undefined
-  >(undefined);
+  // const [currentAbilityToEdit, setCurrentAbilityToEdit] = useState<
+  //   Ability | undefined
+  // >(undefined);
 
   const addRacialAbility = (newAbility: Ability) => {
     setValue('abilities.racial', [...racialAbilities, newAbility]);
