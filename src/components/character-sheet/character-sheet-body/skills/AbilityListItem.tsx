@@ -19,6 +19,8 @@ import {
   faPeopleGroup,
   faLockOpen,
   faFlask,
+  faGun,
+  faFistRaised,
 } from '@fortawesome/free-solid-svg-icons';
 
 type Props = {
@@ -53,10 +55,15 @@ export const AbilityListItem = ({ ability, showIcon = false }: Props) => {
                   color={'text.primary'}>
                   {ability.name}
                 </Text>
+                {ability.isCombat && (
+                  <Box color={'red'}>
+                    <FontAwesomeIcon icon={faFistRaised} />
+                  </Box>
+                )}
               </Flex>
               {!isExpanded && (
                 <Text
-                  color={'text.mutedDark'}
+                  color={'text.pastelBlue'}
                   noOfLines={1}
                   maxHeight={'24px'}
                   width={'fit-content'}>
@@ -66,43 +73,42 @@ export const AbilityListItem = ({ ability, showIcon = false }: Props) => {
               <AccordionIcon />
             </Flex>
           </AccordionButton>
-          <AccordionPanel pb={4} color='text.primary'>
-            {!ability.isPassive && (
+          <AccordionPanel pb={4} color='text.pastelBlue'>
+            {!ability.isActive && (
               <Flex flexDirection={'column'} mb='16px'>
                 {ability.range != null && (
                   <Flex>
-                    <Text fontWeight={'bold'}>Range: </Text>
+                    <Text fontWeight={'bold'} pr={'8px'}>
+                      Range:{' '}
+                    </Text>
                     <Text>{ability.range}</Text>
                   </Flex>
                 )}
                 {ability.duration != null && (
                   <Flex>
-                    <Text fontWeight={'bold'}>Duration: </Text>
+                    <Text fontWeight={'bold'} pr={'8px'}>
+                      Duration:{' '}
+                    </Text>
                     <Text>{ability.duration}</Text>
                   </Flex>
                 )}
                 {ability.cooldown != null && ability.charges != null && (
                   <Flex>
-                    <Text fontWeight={'bold'}>Uses: </Text>
+                    <Text fontWeight={'bold'} pr={'8px'}>
+                      Uses:{' '}
+                    </Text>
                     <Text>
                       {ability.charges} per {ability.cooldown}
                     </Text>
                   </Flex>
                 )}
-                {ability.isCombat && (
+                {ability.damageDice != null && ability.damageType != null && (
                   <Flex>
-                    <Text fontWeight={'bold'}>Combat: </Text>
-                    <Text>
-                      To-Do make an icon for combat spells. Next to name? A
-                      sword?
+                    <Text fontWeight={'bold'} pr={'8px'}>
+                      Damage Roll:{' '}
                     </Text>
-                  </Flex>
-                )}
-                {ability.damage != null && ability.damageType != null && (
-                  <Flex>
-                    <Text fontWeight={'bold'}>Damage Roll: </Text>
                     <Text>
-                      {ability.damage} {ability.damageType} damage
+                      {ability.damageDice} {ability.damageType} damage
                     </Text>
                   </Flex>
                 )}

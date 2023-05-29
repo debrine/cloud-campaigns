@@ -16,6 +16,7 @@ type Props = {
   control: any;
   abilityScores: AbilityScores;
   abilities: CharacterSheet['abilities'];
+  setValue: any;
 };
 
 export const CharacterSheetBodyTabSelector = ({
@@ -24,6 +25,7 @@ export const CharacterSheetBodyTabSelector = ({
   control,
   abilityScores,
   abilities,
+  setValue,
 }: Props) => {
   return (
     <StyledFlexPanel ml={'16px'}>
@@ -45,6 +47,7 @@ export const CharacterSheetBodyTabSelector = ({
               control={control}
               abilityScores={abilityScores}
               abilities={abilities}
+              setValue={setValue}
             />
           </TabPanel>
           <TabPanel>

@@ -19,6 +19,8 @@ export const theme = extendTheme({
       secondary: RAW_COLOURS.blues[6],
       mutedDark: RAW_COLOURS.greys[6],
       lightBlue: RAW_COLOURS.blues[0],
+      lightGrey: RAW_COLOURS.greys[8],
+      pastelBlue: RAW_COLOURS.blues[7],
     },
     negative: RAW_COLOURS.reds[0],
     positive: RAW_COLOURS.greens[0],

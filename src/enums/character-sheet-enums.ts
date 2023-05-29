@@ -98,3 +98,9 @@ export enum AbilityType {
   Wisdom = 'wisdom',
   Charisma = 'charisma',
 }
+
+export enum CooldownPeriods {
+  ShortRest = 'Short Rest',
+  LongRest = 'Long Rest',
+  Day = 'Day',
+}

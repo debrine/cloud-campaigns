@@ -15,6 +15,7 @@ type Props = {
   control: any;
   abilityScores: AbilityScores;
   abilities: CharacterSheet['abilities'];
+  setValue: any;
 };
 
 export const CharacterSheetBodySkillDetails = ({
@@ -23,15 +24,17 @@ export const CharacterSheetBodySkillDetails = ({
   control,
   abilityScores,
   abilities,
+  setValue,
 }: Props) => {
   return (
-    <Flex>
+    <Flex my={'16px'}>
       <AbilityContainer
         racialAbilities={abilities.racial}
         classAbilities={abilities.class}
         feats={abilities.feat}
         items={abilities.item}
         mr={'32px'}
+        setValue={setValue}
       />
       <Flex flexDirection={'column'}>
         <SavingThrowsList

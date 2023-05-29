@@ -47,8 +47,14 @@ const getInitialCharacterSheet = (): CharacterSheet => {
           description:
             'You can use your action to exhale destructive energy. It deals damage in an area according to your ancestry. When you use your breath weapon, all creatures in the area must make a saving throw, the type of which is determined by your ancestry. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest. HBInstead, you may use your breath weapon a number of times equal to your Constitution modifier. You regain expended uses on a short or long rest.',
           isCombat: true,
-          isPassive: false,
+          isActive: false,
           abilityClass: AbilityClass.Class,
+          range: '120 ft.',
+          damageType: 'Acid',
+          damageDice: '2d6',
+          duration: 'Instantaneous',
+          cooldown: 'Short Rest',
+          charges: 'PB',
         },
       ],
       racial: [
@@ -57,7 +63,7 @@ const getInitialCharacterSheet = (): CharacterSheet => {
           description:
             'You can use your action to exhale destructive energy. It deals damage in an area according to your ancestry. When you use your breath weapon, all creatures in the area must make a saving throw, the type of which is determined by your ancestry. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest. HBInstead, you may use your breath weapon a number of times equal to your Constitution modifier. You regain expended uses on a short or long rest.',
           isCombat: true,
-          isPassive: false,
+          isActive: false,
           abilityClass: AbilityClass.Racial,
         },
         {
@@ -65,7 +71,7 @@ const getInitialCharacterSheet = (): CharacterSheet => {
           description:
             'You can use your action to exhale destructive energy. It deals damage in an area according to your ancestry. When you use your breath weapon, all creatures in the area must make a saving throw, the type of which is determined by your ancestry. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest. HBInstead, you may use your breath weapon a number of times equal to your Constitution modifier. You regain expended uses on a short or long rest.',
           isCombat: true,
-          isPassive: false,
+          isActive: false,
           abilityClass: AbilityClass.Racial,
         },
         {
@@ -73,7 +79,7 @@ const getInitialCharacterSheet = (): CharacterSheet => {
           description:
             'You can use your action to exhale destructive energy. It deals damage in an area according to your ancestry. When you use your breath weapon, all creatures in the area must make a saving throw, the type of which is determined by your ancestry. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest. HBInstead, you may use your breath weapon a number of times equal to your Constitution modifier. You regain expended uses on a short or long rest.',
           isCombat: true,
-          isPassive: false,
+          isActive: false,
           abilityClass: AbilityClass.Racial,
         },
       ],
@@ -83,7 +89,7 @@ const getInitialCharacterSheet = (): CharacterSheet => {
           description:
             'You can use your action to exhale destructive energy. It deals damage in an area according to your ancestry. When you use your breath weapon, all creatures in the area must make a saving throw, the type of which is determined by your ancestry. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest. HBInstead, you may use your breath weapon a number of times equal to your Constitution modifier. You regain expended uses on a short or long rest.',
           isCombat: true,
-          isPassive: false,
+          isActive: false,
           abilityClass: AbilityClass.Feat,
         },
       ],
@@ -92,8 +98,8 @@ const getInitialCharacterSheet = (): CharacterSheet => {
           name: 'Breath Weapon 7',
           description:
             'You can use your action to exhale destructive energy. It deals damage in an area according to your ancestry. When you use your breath weapon, all creatures in the area must make a saving throw, the type of which is determined by your ancestry. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest. HBInstead, you may use your breath weapon a number of times equal to your Constitution modifier. You regain expended uses on a short or long rest.',
-          isCombat: true,
-          isPassive: false,
+          isCombat: false,
+          isActive: false,
           abilityClass: AbilityClass.Item,
         },
       ],
@@ -159,6 +165,7 @@ export const CharacterSheetContainer = (props: Props) => {
           abilities={watchedFormData.abilities}
           abilityScores={watchedFormData.abilityScores}
           control={control}
+          setValue={setValue}
         />
       </Flex>
     </form>

@@ -12,12 +12,12 @@ export const Ability = z.object({
   abilityClass: z.nativeEnum(AbilityClass),
   description: z.string(),
   isCombat: z.boolean(),
-  isPassive: z.boolean(),
-  range: z.number().optional(),
+  isActive: z.boolean(),
+  range: z.string().optional(),
   cooldown: z.string().optional(),
-  charges: z.number().optional(),
+  charges: z.string().optional(),
   duration: z.string().optional(),
-  damage: z.string().optional(),
+  damageDice: z.string().optional(),
   damageType: z.string().optional(),
 });
 
