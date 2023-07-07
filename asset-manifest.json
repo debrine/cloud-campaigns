@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cloud-campaigns/static/css/main.d7b6275c.css",
-    "main.js": "/cloud-campaigns/static/js/main.3b4d29a7.js",
+    "main.js": "/cloud-campaigns/static/js/main.ef76155a.js",
     "static/js/787.28cb0dcd.chunk.js": "/cloud-campaigns/static/js/787.28cb0dcd.chunk.js",
     "index.html": "/cloud-campaigns/index.html",
     "main.d7b6275c.css.map": "/cloud-campaigns/static/css/main.d7b6275c.css.map",
-    "main.3b4d29a7.js.map": "/cloud-campaigns/static/js/main.3b4d29a7.js.map",
+    "main.ef76155a.js.map": "/cloud-campaigns/static/js/main.ef76155a.js.map",
     "787.28cb0dcd.chunk.js.map": "/cloud-campaigns/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d7b6275c.css",
-    "static/js/main.3b4d29a7.js"
+    "static/js/main.ef76155a.js"
   ]
 }
