@@ -9,7 +9,10 @@ type Props = {
 
 export const CharacterSheetAbilityScores = ({ control }: Props) => {
   return (
-    <StyledFlexPanel flexDirection={'column'} width={'fit-content'}>
+    <StyledFlexPanel
+      flexDirection={'column'}
+      width={'fit-content'}
+      height={'fit-content'}>
       <ControlledAbilityScoreWithModifier
         name={'abilityScores.strength'}
         control={control}

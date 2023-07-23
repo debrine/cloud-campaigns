@@ -7,19 +7,27 @@ import {
   Flex,
   Text,
   Box,
+  Menu,
+  MenuButton,
+  IconButton,
+  MenuList,
+  MenuItem,
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   Ability,
   AbilityClass,
 } from '../../../../models/character-sheet-models/ability.model';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { IconDefinition, icon } from '@fortawesome/fontawesome-svg-core';
 import {
   faMagicWandSparkles,
   faPeopleGroup,
   faLockOpen,
   faFlask,
   faFistRaised,
+  faEllipsisVertical,
+  faPenToSquare,
+  faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 
 type Props = {
@@ -73,6 +81,22 @@ export const AbilityListItem = ({ ability, showIcon = false }: Props) => {
             </Flex>
           </AccordionButton>
           <AccordionPanel pb={4} color='text.pastelBlue'>
+            <Flex justifyContent={'flex-end'} mb='16px'>
+              {' '}
+              <AbilityListItemMenuButton
+              // removeAbility={() => removeAbility(id)}
+              // openEditPartyMemberModal={() =>
+              //   openEditPartyMemberModal({
+              //     characterName,
+              //     playerName,
+              //     characterRace,
+              //     characterClass,
+              //     characterLevel,
+              //     id,
+              //   })
+              // }
+              />
+            </Flex>
             {!ability.isActive && (
               <Flex flexDirection={'column'} mb='16px'>
                 {ability.range != null && (
@@ -118,6 +142,45 @@ export const AbilityListItem = ({ ability, showIcon = false }: Props) => {
         </>
       )}
     </AccordionItem>
+  );
+};
+
+type ButtonProps = {
+  removeAbility: () => void;
+  openEditAbilityModal: () => void;
+};
+
+const AbilityListItemMenuButton = ({
+  removeAbility,
+  openEditAbilityModal,
+  ...stylingProps
+}: ButtonProps) => {
+  return (
+    <Menu>
+      <MenuButton
+        as={IconButton}
+        aria-label='Options'
+        icon={<FontAwesomeIcon icon={faEllipsisVertical} />}
+        variant='none'
+        _hover={{
+          color: 'text.secondary',
+        }}
+      />
+      <MenuList color={'black'}>
+        <MenuItem onClick={() => openEditAbilityModal()}>
+          <Flex justifyContent={'space-between'} width={'100%'} lineHeight={1}>
+            Edit Ability
+            <FontAwesomeIcon icon={faPenToSquare} />
+          </Flex>
+        </MenuItem>
+        <MenuItem onClick={() => removeAbility()}>
+          <Flex justifyContent={'space-between'} width={'100%'} lineHeight={1}>
+            Forget Ability
+            <FontAwesomeIcon icon={faTrash} />
+          </Flex>
+        </MenuItem>
+      </MenuList>
+    </Menu>
   );
 };
 

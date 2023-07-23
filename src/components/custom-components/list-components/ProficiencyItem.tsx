@@ -104,7 +104,7 @@ export const ProficiencyListItem = ({
           {skillName}
         </Text>
         {modifierLabel != null && (
-          <Text color={'text.mutedDark'}>({modifierLabel})</Text>
+          <Text color={'text.pastelBlue'}>({modifierLabel})</Text>
         )}
       </Flex>
 

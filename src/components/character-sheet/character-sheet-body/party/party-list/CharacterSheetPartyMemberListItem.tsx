@@ -49,7 +49,7 @@ export const CharacterSheetPartyMemberListItem = ({
                 _expanded={{ display: 'none' }}>
                 {characterName}
               </Text>
-              <Text fontStyle={'italic'} color={'text.secondary'}>
+              <Text fontStyle={'italic'} color={'text.pastelBlue'}>
                 {playerName}
               </Text>
             </Flex>
@@ -68,7 +68,7 @@ export const CharacterSheetPartyMemberListItem = ({
         <Flex justifyContent={'flex-end'} mb='16px'>
           {' '}
           <CharacterSheetPartyMemberListItemMenuButton
-            onClick={() => removePartyMember(id)}
+            removeMember={() => removePartyMember(id)}
             openEditPartyMemberModal={() =>
               openEditPartyMemberModal({
                 characterName,
@@ -81,19 +81,19 @@ export const CharacterSheetPartyMemberListItem = ({
             }
           />
         </Flex>
-        <Textarea />
+        <Textarea color={'theme.pastelBlue'} />
       </AccordionPanel>
     </AccordionItem>
   );
 };
 
 type ButtonProps = {
-  onClick: () => void;
+  removeMember: () => void;
   openEditPartyMemberModal: () => void;
 };
 
 const CharacterSheetPartyMemberListItemMenuButton = ({
-  onClick,
+  removeMember,
   openEditPartyMemberModal,
 }: ButtonProps) => {
   return (
@@ -120,7 +120,7 @@ const CharacterSheetPartyMemberListItemMenuButton = ({
             />
           </Flex>
         </MenuItem>
-        <MenuItem onClick={() => onClick()}>
+        <MenuItem onClick={() => removeMember()}>
           <Flex justifyContent={'space-between'} width={'100%'} lineHeight={1}>
             Kill Party Member
             <FontAwesomeIcon
